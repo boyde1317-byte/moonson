@@ -1,4 +1,4 @@
-![Moonson Bot Demo](https://media.base44.com/images/public/6a6faa067c8ee05c592007b5/a174ce51a_generated_image.png)
+![Moonson Banner](assets/moonson-banner.png)
 
 # Moonson
 **WhatsApp Bot**
@@ -202,7 +202,7 @@ Once running, scan the QR code or use the pairing code to connect your WhatsApp 
 
 ## 🖼️ Screenshots
 
-![Moonson Bot Demo](https://media.base44.com/images/public/6a6faa067c8ee05c592007b5/a174ce51a_generated_image.png)
+![Moonson Banner](assets/moonson-banner.png)
 
 ---
 
