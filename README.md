@@ -1,273 +1,204 @@
 ![Moonson Banner](assets/moonson-banner.png)
 
-# Moonson
-**WhatsApp Bot**
+<div align="center">
 
-![Version](https://img.shields.io/badge/version-8.0.3-black)
-![Node.js](https://img.shields.io/badge/Node.js-18+-green)
-![License](https://img.shields.io/badge/License-MIT-yellow)
-[![Release](https://img.shields.io/badge/Release-latest-blue)](https://github.com/boyde1317-byte/moonson/releases)
-[![Fork](https://img.shields.io/badge/Fork-Repo-orange)](https://github.com/boyde1317-byte/moonson/fork)
-[![Download ZIP](https://img.shields.io/badge/Download-ZIP-red)](https://github.com/boyde1317-byte/moonson/archive/refs/heads/main.zip)
+# 🌙 Moonson
 
-**Advanced WhatsApp Bot with AI, Downloaders, and Group Management**
+*The all-in-one WhatsApp assistant — AI, media, group management, and more.*
 
----
+![Version](https://img.shields.io/badge/version-8.0.3-black?style=flat-square)
+![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=flat-square&logo=node.js&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
+[![GitHub](https://img.shields.io/badge/Repo-moonson-181717?style=flat-square&logo=github)](https://github.com/boyde1317-byte/moonson)
+[![Download](https://img.shields.io/badge/Download-ZIP-dc143c?style=flat-square)](https://github.com/boyde1317-byte/moonson/archive/refs/heads/main.zip)
 
-## 📌 Table of Contents
-- [Is this bot official?](##-📌-Is-this-bot-official?)
-- [Pricing](##💰Pricing)
-- [Features](##-✨-Features)
-- [Commands](##-📋-Commands)
-- [Installation](##-🚀-Installation)
-- [Configuration](##-⚙️-Configuration)
-- [Creatingcustomcmd](##-📝-Creating-Custom-Commands)
-- [Usage](##-🏃-Usage)
-- [Screenshots](##-🖼️-Screenshots)
-- [Contributing](##-👥-Contributors)
-- [Contributors](##-👥-Contributors)
-- [License](##-📄-License)
-- [Support / Contact](##-💬-Support-/-Contact)
-- [show support](##-⭐-Show-your-support)
-- [join our site for updates](##-🌠-SITE-FOR-UPDATES)
+**Built by Moonson Aizen with ♥︎ in Ghana**
 
----
-## 📌 Is this bot official?
-
-**Yes and no.**  
-This bot is developed and maintained by **Moonson** – it is **officially supported** by the author, but it is **not an official WhatsApp product**. It is a community project that uses the WhatsApp Web protocol (via Baileys) to provide an automated assistant. **Use it responsibly** and comply with WhatsApp’s Terms of Service.
-
-> 💡 **Advice from the author:**  
-> Always keep your bot updated, avoid spamming, and respect group admins. This bot is free and open‑source – if you like it, consider ⭐ starring the repo and sharing it with friends!,for updates [join our site for updates](## 🌠 SITE FOR UPDATES)
+</div>
 
 ---
 
-## 💰Pricing
+## About
 
-The source code is **free** and open source. However, if you want me to host and maintain the bot for you:
+**Moonson** is a powerful, community-driven WhatsApp bot built on the Baileys library. It brings AI chat, media downloading, group admin tools, and a polished interactive UI straight into your WhatsApp — no browser, no API keys to manage.
 
-| Service | Price (TZS) | Description |
-| :--- | :--- | :--- |
-| Bot Hosting (Monthly) | 5,000 | I host the bot 24/7 for you |
-| Premium Access (Monthly) | 1,000 | Unlock all premium features |
-| Custom Commands | 500 | I add custom commands for your group |
+> ⚠️ Moonson is **not affiliated with WhatsApp/Meta**. It uses the WhatsApp Web protocol for automation. Use responsibly and follow WhatsApp's Terms of Service.
+
+---
+
+## ✨ What It Does
+
+| Area | Highlights |
+|:-----|:----------|
+| **AI** | ChatGPT, DeepSeek, Gemini, Claude, Copilot, Meta AI, Bible AI |
+| **Media** | YouTube, Spotify, TikTok, Instagram, Facebook, Pinterest downloads |
+| **Groups** | Anti-bot, warnings, kicks, promotions, muting, polls, descriptions |
+| **Tools** | Weather, QR codes, screenshots, URL fetch, background removal, HD upscaling |
+| **Profile** | Coins, levels, leaderboards, AFK, transfers, daily claims |
+| **Admin** | Custom commands, broadcast, ban, premium, eval, script backup |
+
+Type `.menu` in chat to open the full interactive command center.
+
+---
+
+## 💎 Pricing
+
+The source code is **free and open source**. Hosting services are available:
+
+| Plan | Price (GHS) | What you get |
+|:-----|:-----------|:-------------|
+| Bot Hosting | 50/mo | 24/7 uptime, I handle the server |
+| Premium Access | 10/mo | Unlock all premium-tier commands |
+| Custom Commands | 5 each | Tailor-made commands for your group |
 | Donation | Any amount | Support the project ❤️ |
 
-**Contact:** [owner](https://wa.me//233533416608)
+**Reach out:** [wa.me/233533416608](https://wa.me/233533416608)
 
 ---
 
-## ✨ Features
+## 🚀 Getting Started
 
-- 🤖 **AI Chat** – ChatGPT, DeepSeek, Gemini, Claude, Meta AI
-- 🎵 **Downloaders** – YouTube, Spotify, Facebook, TikTok, Instagram
-- 👥 **Group Management** – Anti-bot, Warn, Kick, Promote, Demote, Mute
-- 🎨 **Rich UI** – AIRich messages, interactive buttons, booking cards
-- 📊 **User Status** – Level, coins, badges, uptime tracking
-- 🔧 **Custom Commands** – Add/edit commands on-the-fly with `.addcmd`
+### Requirements
+- **Node.js** 18 or higher
+- A **WhatsApp** account (with an active number)
 
----
-
-## 📋 Commands
-
-| Category | Commands |
-|----------|----------|
-| **AI Chat** | `.chatgpt`, `.deepseek`, `.gemini`, `.claude`, `.meta`, `.unlimitedai`, `.publicai` |
-| **Downloader** | `.play`, `.facebookdl`, `.ytmp3`, `.ytmp4`, `.tiktokdl`, `.instagramdl` |
-| **Group** | `.antibot`, `.warn`, `.kick`, `.promote`, `.demote`, `.mute`, `.setoption` |
-| **Information** | `.about`, `.status`, `.uptime`, `.owner`, `.bizinfo` |
-| **Owner** | `.addcmd`, `.reload`, `.setprefix`, `.run` |
-| **Tools** | `.banana`, `.table`, `.weather`, `.poll` |
-
-> Use `.menu` to open the interactive main menu.
-
----
-
-## 🚀 Installation
-
-### Prerequisites
-- **Node.js** 18+
-- **npm** or **yarn**
-- A **WhatsApp** account
-
-### Steps
+### Install
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/your-username/Moonson.git
-cd Moonson
-
-# 2. Install dependencies
+git clone https://github.com/boyde1317-byte/moonson.git
+cd moonson
 npm install
-
-# 3. Copy and configure the example config
 cp config.example.json config.json
+# Edit config.json with your number and preferences
+npm start
 ```
+
+When the bot starts, you'll get a **pairing code** (default: `MOONSON1`) — enter it on your WhatsApp linked devices to connect.
+
 ---
 
 ## ⚙️ Configuration
 
-Edit `config.example.json` with your details:
-rename `config.example.json` to `config.json`
+Key fields in `config.json`:
 
 ```json
 {
   "bot": {
     "name": "Moonson",
     "phoneNumber": "233533416608",
-    "thumbnail": "https://files.catbox.moe/yryprc.jpg",
-    "groupjid" : ""
-    "groupLink": "https://chat.whatsapp.com/EWlNm6bMYJCELwzvnmboyC"
-    "channellink": "https://whatsapp.com/channel/0029VbDJJY19WtC1T0Vgqp0v"
+    "groupLink": "your-group-link",
+    "channellink": "your-channel-link"
+  },
+  "owner": {
+    "name": "Moonson Aizen",
+    "id": "233533416608"
   },
   "system": {
     "prefix": ".",
     "usePairingCode": true,
     "customPairingCode": "MOONSON1",
-    "timeZone": "Africa/Ghana"
+    "timeZone": "Africa/Accra"
   },
-  "owner": {
-    "name": "Moonson",
-    "id": "233533416608"
+  "sticker": {
+    "packname": "Moonson",
+    "author": "Moonson Aizen"
   }
 }
 ```
 
-| Key | Description |
-|-----|-------------|
-| `bot.phoneNumber` | Your WhatsApp number (international format) |
-| `system.prefix` | Command prefix (default: `.`) |
-| `system.usePairingCode` | Use pairing code instead of QR scan |
+| Field | Purpose |
+|:------|:--------|
+| `bot.phoneNumber` | Your WhatsApp number (international format, no `+`) |
+| `system.prefix` | Command trigger character (default: `.`) |
+| `system.customPairingCode` | 8-character code for linking devices |
+| `system.timeZone` | Moment.js timezone for the bot |
 
 ---
 
-## 📝 Creating Custom Commands
+## 📝 Writing Your Own Commands
 
-Anyone can add new commands to the bot. Use the template below to create your own command.
-
-### 📋 Command Template
+Drop a `.js` file into the matching `commands/<category>/` folder:
 
 ```javascript
 module.exports = {
-    name: "yourcommand",        // Main command name (required)
-    aliases: ["yc", "cmd"],     // Alternative names (optional)
-    category: "yourcategory",   // Folder name (optional)
-    permissions: {              // Permission flags (optional)
-        coin: 0,                // Cost in coins
-        group: false,           // Only in groups?
-        owner: false,           // Only bot owner?
-        premium: false,         // Only premium users?
-        admin: false,           // Only group admins?
-        botAdmin: false,        // Bot must be admin?
-        private: false,         // Only private chats?
-        restrict: false         // Restrictive mode?
-    },
-    code: async (ctx) => {      // Main function (required)
+    name: "hello",
+    aliases: ["hi", "yo"],
+    category: "information",
+    permissions: { coin: 0, group: false, owner: false },
+    code: async (ctx) => {
         try {
-            // ── Your logic here ──
-            await ctx.reply("✅ Command executed!");
-        } catch (error) {
-            console.error("[yourcommand] Error:", error);
-            await ctx.reply("❌ An error occurred.");
+            await ctx.reply("👋 Hey there!");
+        } catch (e) {
+            console.error("[hello]", e);
+            await ctx.reply("❌ Something went wrong.");
         }
     }
 };
 ```
+
+No restart needed — the bot hot-reloads commands.
+
 ---
 
-## 🏃 Usage
-
-### Start the Bot
+## 🏃 Running
 
 ```bash
+# Direct
 npm start
-```
 
-### Development Mode
-
-```bash
-npm run dev
-```
-
-### With PM2
-
-```bash
+# PM2 (recommended for 24/7)
 npm run start:pm2
 pm2 logs
 ```
 
-Once running, scan the QR code or use the pairing code to connect your WhatsApp account.
-
 ---
 
-## 🖼️ Screenshots
+## 🧩 Built With
 
-![Moonson Banner](assets/moonson-banner.png)
+- [Baileys](https://github.com/itsliaaa/baileys) — WhatsApp Web API
+- [Axios](https://axios-http.com) — HTTP client
+- [Jimp](https://jimp.js.org) — Image processing
+- [Simpl.DB](https://www.npmjs.com/package/simpl.db) — Lightweight storage
+- [Moment Timezone](https://momentjs.com/timezone/) — Time handling
 
 ---
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+1. Fork the repo
+2. Create a branch (`git checkout -b feat/your-feature`)
+3. Commit (`git commit -m 'feat: add your feature'`)
+4. Push (`git push origin feat/your-feature`)
 5. Open a Pull Request
-   
-Contributions, issues, and feature requests are welcome!
-Feel free to check the issues page or open a pull request.
 
-
----
-
-## 👥 Contributors
-
-| Name | Role |
-|------|------|
-| **Moonson** | Founder & Lead Developer |
-| **Moonson** | Contributor |
-| **Moonson** | Contributor |
-
+Bug reports, feature requests, and PRs are all welcome.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
+**MIT** — see [LICENSE](LICENSE).
 
 ---
 
-## 💬 Support / Contact
+## 💬 Contact
 
-| Name | Contact |
-|------|---------|
-| **[Moonson](https://wa.me/233533416608)** | WhatsApp |
-| **[Moonson](https://wa.me/233533416608)** | WhatsApp |
-| **[Moonson](https://wa.me/233533416608)** | WhatsApp |
-| **[Moonson family](https://chat.whatsapp.com/EWlNm6bMYJCELwzvnmboyC)** | WhatsApp Group |
-| **[Moonson](mailto:aizen.moonson@gmail.com)** | Email |
-|**[Moonson updates](https://whatsapp.com/channel/0029VbDJJY19WtC1T0Vgqp0v)** |WhatsApp channel 
----
-## ⭐ Show your support
-
-If you like this project, please give it a ⭐ on GitHub – it helps others discover it!
+| Platform | Link |
+|:---------|:-----|
+| WhatsApp | [wa.me/233533416608](https://wa.me/233533416608) |
+| Email | [aizen.moonson@gmail.com](mailto:aizen.moonson@gmail.com) |
+| GitHub | [boyde1317-byte/moonson](https://github.com/boyde1317-byte/moonson) |
+| Group | [Moonson Family](https://chat.whatsapp.com/EWlNm6bMYJCELwzvnmboyC) |
+| Channel | [Moonson Updates](https://whatsapp.com/channel/0029VbDJJY19WtC1T0Vgqp0v) |
 
 ---
 
-## 🌠 SITE FOR UPDATES
+## ⭐ Support
 
-### 📢 **Moonson Family Group**
+If Moonson helped you out, drop a ⭐ on the repo — it helps others find it.
 
-> Welcome to the **Moonson Family Group**! 🚀 This is the official WhatsApp group for users, developers, and enthusiasts of the Moonson brand. Share your experiences, ask questions, report bugs, suggest new features, and connect with the team and other users.
+<div align="center">
 
-**[Join Group](https://chat.whatsapp.com/EWlNm6bMYJCELwzvnmboyC)**
+🌙 **Moonson** — *by Moonson Aizen*
 
----
-
-### 📢 **Moonson Updates Channel**
-
-> 📢 The official broadcast channel for **Moonson**. Get the latest news, updates, new features, release notes, and important announcements. Stay informed and never miss an update!
-
-**[Join WhatsApp Channel](https://whatsapp.com/channel/0029VbDJJY19WtC1T0Vgqp0v)**
-
-built by Moonson Aizen with ♥︎
+</div>
