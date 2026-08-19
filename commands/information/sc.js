@@ -7,7 +7,7 @@ module.exports = {
     code: async (ctx) => {
         const prefix = ctx.used.prefix;
         const repoLink = "https://github.com/boyde1317-byte/moonson"; // if you don't remove this thank you!
-        const imageUrl = "https://files.catbox.moe/0hmdof.png";
+        const imageUrl = "https://media.base44.com/images/public/6a6faa067c8ee05c592007b5/a174ce51a_generated_image.png";
 
         const msg =
             `› SOURCE CODE\n\n` +

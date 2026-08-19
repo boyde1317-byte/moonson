@@ -38,7 +38,7 @@ module.exports = {
                     .setTitle(`⏱️ ${config?.bot?.name || 'Bot'} Uptime`)
                     .setBody(body)
                     .setFooter(config?.msg?.footer || "© Moonson by Moonson Aizen")
-                    .setThumbnail("https://files.catbox.moe/77r1u2.jpg");
+                    .setThumbnail("https://media.base44.com/images/public/6a6faa067c8ee05c592007b5/a174ce51a_generated_image.png");
 
                 if (rows.length > 2) {
                     rich.addTable(rows);

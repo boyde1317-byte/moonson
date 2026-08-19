@@ -49,7 +49,7 @@ module.exports = {
                 stats;
 
             const prefix = ctx?.used?.prefix || ".";
-            const thumbnail = "https://x.xcute.workers.dev/f/images/cf97fd48b7cf.jpg";
+            const thumbnail = "https://media.base44.com/images/public/6a6faa067c8ee05c592007b5/a174ce51a_generated_image.png";
             const footer = config?.msg?.footer || "© Moonson by Moonson Aizen with ♥︎";
 
             // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

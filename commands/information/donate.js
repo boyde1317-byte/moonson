@@ -22,7 +22,7 @@ module.exports = {
                 .setTitle("› Donate")
                 .setBody(msg)
                 .setFooter("© Moonson by Moonson Aizen with ♥︎")
-                .setThumbnail("https://files.catbox.moe/0hmdof.png")
+                .setThumbnail("https://media.base44.com/images/public/6a6faa067c8ee05c592007b5/a174ce51a_generated_image.png")
                 .addButton("› Donate Online", `${prefix}open ${donateLink}`)
                 .addButton("› Copy Number", `${prefix}copy ${ownerNumber}`)
                 .send(ctx._msg.key.remoteJid, { quoted: ctx._msg });

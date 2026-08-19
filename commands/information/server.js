@@ -36,7 +36,7 @@ module.exports = {
                 `› ${formatter.bold("Library")}: Moonson Aizen`;
 
             const prefix = ctx?.used?.prefix || ".";
-            const thumbnail = "https://x.xcute.workers.dev/f/images/cf97fd48b7cf.jpg"; // Reuse your about thumbnail
+            const thumbnail = "https://media.base44.com/images/public/6a6faa067c8ee05c592007b5/a174ce51a_generated_image.png"; // Reuse your about thumbnail
             const footer = config?.msg?.footer || "© Moonson by Moonson Aizen";
 
             // ── Check if ButtonV2 is available ──

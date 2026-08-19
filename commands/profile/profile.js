@@ -14,7 +14,7 @@ module.exports = {
             try {
                 profilePicUrl = await ctx.core.profilePictureUrl(senderJid, "image");
             } catch {
-                profilePicUrl = "https://files.catbox.moe/0hmdof.png"; // fallback image
+                profilePicUrl = "https://media.base44.com/images/public/6a6faa067c8ee05c592007b5/a174ce51a_generated_image.png"; // fallback image
             }
 
             // ── Build leaderboard data ──

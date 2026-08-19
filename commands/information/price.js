@@ -29,7 +29,7 @@ module.exports = {
                 .setTitle("› Price List")
                 .setBody(msg)
                 .setFooter("Tap to take action")
-                .setThumbnail("https://x.xcute.workers.dev/f/images/cf97fd48b7cf.jpg")
+                .setThumbnail("https://media.base44.com/images/public/6a6faa067c8ee05c592007b5/a174ce51a_generated_image.png")
                 .addButton("› Contact Owner", `${prefix}owner`)
                 .addButton("› Donate", `${prefix}donate`)
                 .send(ctx._msg.key.remoteJid, { quoted: ctx._msg });

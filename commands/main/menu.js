@@ -40,7 +40,7 @@ module.exports = {
             // THUMBNAILS
             // ========================================
             const thumbnails = [
-                "https://files.catbox.moe/0hmdof.png",
+                "https://media.base44.com/images/public/6a6faa067c8ee05c592007b5/a174ce51a_generated_image.png",
             ];
             const randomThumbnail = thumbnails[Math.floor(Math.random() * thumbnails.length)];
 
