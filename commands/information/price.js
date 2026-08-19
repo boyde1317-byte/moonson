@@ -22,7 +22,7 @@ module.exports = {
             `  Monthly │ 10,000 TZS\n\n` +
             `› Payment: Halopesa · M-Pesa · Airtel · Tigo · Mixx · TTCL\n` +
             `› Contact: wa.me/${ownerNumber}\n\n` +
-            `${config.msg?.footer || "© Moonson by Aizen"}`;
+            `${config.msg?.footer || "© Moonson by Moonson Aizen"}`;
 
         if (typeof ButtonV2 !== "undefined" && ButtonV2) {
             await new ButtonV2(ctx.core)

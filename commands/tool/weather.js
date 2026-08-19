@@ -49,7 +49,7 @@ module.exports = {
             const ownerNumber = config?.owner?.id || "233533416608";
             const phoneFormatted = ownerNumber.replace(/[^0-9]/g, '');
             const groupLink = config?.bot?.groupLink || "https://chat.whatsapp.com/JgHII0iCl42JD2mGoJSwji";
-            const footer = config?.msg?.footer || "© Moonson by Aizen";
+            const footer = config?.msg?.footer || "© Moonson by Moonson Aizen";
 
             await ctx.core.relayMessage(ctx._msg.key.remoteJid, {
                 interactiveMessage: {

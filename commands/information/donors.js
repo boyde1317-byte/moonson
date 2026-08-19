@@ -11,12 +11,12 @@ module.exports = {
             // ─── Donor List (you may change thanks!) ───
             const donaturList = [
                 {
-                    name: "Aizen",
+                    name: "Moonson Aizen",
                     role: "Server",
                     image: "https://files.catbox.moe/2qrbb2.png"
                 },
                 {
-                    name: "Aizen",
+                    name: "Moonson Aizen",
                     role: "Creator",
                     image: "https://files.catbox.moe/qyfsw3.png"
                 },
@@ -79,7 +79,7 @@ module.exports = {
                 )
 
                 // ─── Tip ───
-                .addTip("_Regards: © Moonson by Aizen_")
+                .addTip("_Regards: © Moonson by Moonson Aizen_")
 
                 // ─── Quick Actions ───
                 .addSuggest([

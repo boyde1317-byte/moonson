@@ -40,7 +40,7 @@ module.exports = {
             // ── Use first image as thumbnail (if available) ──
             const thumbnail = imageItems.length > 0 ? imageItems[0].url : (videoItems.length > 0 ? videoItems[0].url : config.bot.thumbnail);
 
-            const footer = config.msg.footer || "© Moonson by Aizen";
+            const footer = config.msg.footer || "© Moonson by Moonson Aizen";
 
             // ── Build the AIRich message ──
             const rich = new AIRich(ctx.core);

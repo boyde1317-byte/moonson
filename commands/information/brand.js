@@ -31,7 +31,7 @@ module.exports = {
                 `  › AizenWeb – Website\n` +
                 `  › AizenPanel – Pterodactyl Management\n\n` +
                 `» *Our Team*\n` +
-                `  › Aizen – Founder & Developer\n\n` +
+                `  › Moonson Aizen – Founder & Developer\n\n` +
                 `» *Mission*\n` +
                 `  › Making technology accessible,\n` +
                 `  › affordable, and useful for everyone.\n\n` +
@@ -44,7 +44,7 @@ module.exports = {
                 `  › Group: Moonson Family\n` +
                 `  › Channel: Moonson Updates\n` +
                 `  › Website: ${websiteLink}\n\n` +
-                `_Built with ♥︎ by Aizen_`;
+                `_Built with ♥︎ by Moonson Aizen_`;
 
             const outerBody =
                 `» *Moonson*\n` +

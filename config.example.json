@@ -23,20 +23,20 @@
     "privatePremiumOnly": "You must be a premium user to use this in private chats.",
     "restrict": "This command is restricted to prevent WhatsApp bans!",
     "unavailableAtNight": "The bot is unavailable from 12:00 AM to 6:00 AM! Please come back later.",
-    "footer": "© Moonson by Aizen with ♥︎",
+    "footer": "© Moonson by Moonson Aizen with ♥︎",
     "wait": "Please wait...",
     "notFound": "Nothing found! Try again later.",
     "error": "An error occurred while processing your request! Please try again later or contact the owner if the problem persists.",
     "invalidUrl": "Invalid URL!"
   },
   "owner": {
-    "name": "Aizen",
+    "name": "Moonson Aizen",
     "organization": "Moonson",
     "id": "233533416608",
     "report": true,
     "co": [
       {
-        "name": "Aizen",
+        "name": "Moonson Aizen",
         "organization": "Moonson",
         "id": "233533416608",
         "report": false
@@ -52,7 +52,7 @@
   },
   "sticker": {
     "packname": "Moonson",
-    "author": "Aizen"
+    "author": "Moonson Aizen"
   },
   "system": {
     "alwaysOnline": true,
@@ -71,7 +71,7 @@
     "unavailableAtNight": false,
     "useCoin": true,
     "usePairingCode": true,
-    "customPairingCode": "MOONSON", 
+    "customPairingCode": "MOONSON1", 
     "useStore": false,
     "useServer": false,
     "prefix": "."

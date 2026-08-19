@@ -12,7 +12,7 @@ module.exports = {
             // SAFE DEFAULTS
             // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             const botName = config?.bot?.name || "Moonson";
-            const ownerName = config?.owner?.name || "Aizen";
+            const ownerName = config?.owner?.name || "Moonson Aizen";
             const version = require("../../package.json").version || "8.0.3";
             const mode = tools?.msg?.ucwords?.(ctx?.db?.bot?.mode) || "self";
             const uptime = tools?.msg?.convertMsToDuration?.(Date.now() - (ctx?.me?.readyAt || Date.now())) || "N/A";
@@ -42,7 +42,7 @@ module.exports = {
                 `› ${formatter?.bold?.("Mode") || "Mode"}: ${mode}\n` +
                 `› ${formatter?.bold?.("Uptime") || "Uptime"}: ${uptime}\n` +
                 `› ${formatter?.bold?.("Database") || "Database"}: ${dbSize} (Simpl.DB with JSON)\n` +
-                `› ${formatter?.bold?.("Library") || "Library"}: Aizen`;
+                `› ${formatter?.bold?.("Library") || "Library"}: Moonson Aizen`;
 
             const fullBody =
                 `Hello! I am a WhatsApp bot named ${botName}, owned by ${ownerName}. I can perform many commands, such as creating stickers, using AI for various tasks, and other useful features. I'm here to entertain and assist you!\n\n` +
@@ -50,7 +50,7 @@ module.exports = {
 
             const prefix = ctx?.used?.prefix || ".";
             const thumbnail = "https://x.xcute.workers.dev/f/images/cf97fd48b7cf.jpg";
-            const footer = config?.msg?.footer || "© Moonson by Aizen with ♥︎";
+            const footer = config?.msg?.footer || "© Moonson by Moonson Aizen with ♥︎";
 
             // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             // SEND WITH HORIZONTAL QUICK-REPLY BUTTONS
@@ -88,7 +88,7 @@ module.exports = {
             try {
                 await ctx.reply(
                     `🤖 About ${config?.bot?.name || "Moonson"}\n` +
-                    `Owner: ${config?.owner?.name || "Aizen"}\n` +
+                    `Owner: ${config?.owner?.name || "Moonson Aizen"}\n` +
                     `Version: ${require("../../package.json").version || "8.0.3"}\n\n` +
                     `❌ An error occurred while loading full details.\n` +
                     `Please try again later.`

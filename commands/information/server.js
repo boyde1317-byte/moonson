@@ -33,11 +33,11 @@ module.exports = {
                 "\n" +
                 `› ${formatter.bold("Bot Uptime")}: ${tools.msg.convertMsToDuration(Date.now() - ctx.me.readyAt)}\n` +
                 `› ${formatter.bold("Database")}: ${ctx.db.users.totalEntries} users, ${ctx.db.groups.totalEntries}/${Object.values(await ctx.core.groupFetchAllParticipating()).filter(group => !group.announce && !group.isCommunity && !group.isCommunityAnnounce).map(group => group.id).length} groups\n` +
-                `› ${formatter.bold("Library")}: Aizen`;
+                `› ${formatter.bold("Library")}: Moonson Aizen`;
 
             const prefix = ctx?.used?.prefix || ".";
             const thumbnail = "https://x.xcute.workers.dev/f/images/cf97fd48b7cf.jpg"; // Reuse your about thumbnail
-            const footer = config?.msg?.footer || "© Moonson by Aizen";
+            const footer = config?.msg?.footer || "© Moonson by Moonson Aizen";
 
             // ── Check if ButtonV2 is available ──
             if (typeof ButtonV2 !== "undefined" && ButtonV2) {

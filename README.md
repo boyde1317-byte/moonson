@@ -123,7 +123,7 @@ rename `config.example.json` to `config.json`
   "system": {
     "prefix": ".",
     "usePairingCode": true,
-    "customPairingCode": "MOONSON",
+    "customPairingCode": "MOONSON1",
     "timeZone": "Africa/Ghana"
   },
   "owner": {
@@ -270,4 +270,4 @@ If you like this project, please give it a ⭐ on GitHub – it helps others dis
 
 **[Join WhatsApp Channel](https://whatsapp.com/channel/0029VbDJJY19WtC1T0Vgqp0v)**
 
-built by Aizen with ♥︎
+built by Moonson Aizen with ♥︎

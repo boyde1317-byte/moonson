@@ -3,7 +3,7 @@ const config = require('../config');
 const axios = require('axios');
 const { AIRich } = require('../lib/NIXCODE');
 
-const FOOTER = config.msg.footer || `© ${config.bot.name} by Aizen`;
+const FOOTER = config.msg.footer || `© ${config.bot.name} by Moonson Aizen`;
 
 // ─── Helper: Try Hansa API (fallback) ──────────────────
 async function tryHansaAPI(url) {

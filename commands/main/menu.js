@@ -374,7 +374,7 @@ module.exports = {
                                 title: "Select Category",
                                 sections: [
                                     {
-                                        title: "Built By Aizen",
+                                        title: "Built By Moonson Aizen",
                                         rows: [
                                             { title: "All Commands", description: "Show all commands list", id: `${ctx.used.prefix}menu all` }
                                         ]

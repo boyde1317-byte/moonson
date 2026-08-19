@@ -60,7 +60,7 @@ module.exports = {
                     `**A:** ${result}\n\n` +
                     `[](https://wa.me/${config.owner.id})`
                 )
-                .addTip("_Powered by Aizen — ai system_")
+                .addTip("_Powered by Moonson Aizen — ai system_")
                 .addSuggest([
                     `${ctx.used.prefix}gemini`,
                     `${ctx.used.prefix}chatgpt`,

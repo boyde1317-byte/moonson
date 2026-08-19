@@ -35,7 +35,7 @@ module.exports = {
             const author = response.result?.author || response.author || "Unknown";
 
             // ── Build the AIRich card ──
-            const footer = config.msg.footer || "© Moonson by Aizen";
+            const footer = config.msg.footer || "© Moonson by Moonson Aizen";
             const thumbnail = response.result?.cover || config.bot.thumbnail;
 
             if (isVideo) {

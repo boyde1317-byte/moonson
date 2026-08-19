@@ -21,7 +21,7 @@ module.exports = {
             await new ButtonV2(ctx.core)
                 .setTitle("› Donate")
                 .setBody(msg)
-                .setFooter("© Moonson by Aizen with ♥︎")
+                .setFooter("© Moonson by Moonson Aizen with ♥︎")
                 .setThumbnail("https://files.catbox.moe/0hmdof.png")
                 .addButton("› Donate Online", `${prefix}open ${donateLink}`)
                 .addButton("› Copy Number", `${prefix}copy ${ownerNumber}`)

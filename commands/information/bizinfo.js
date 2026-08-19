@@ -11,21 +11,21 @@ module.exports = {
             // ── Contributors data (from config or fallback) ──
             const contributors = config?.owner?.contributors || [
                 {
-                    name: "Aizen",
+                    name: "Moonson Aizen",
                     number: "233533416608",
                     email: "aizen.moonson@gmail.com",
                     website: "https://moonson-bot.vercel.app",
                     group: "https://chat.whatsapp.com/JgHII0iCl42JD2mGoJSwji"
                 },
                 {
-                    name: "Aizen",
+                    name: "Moonson Aizen",
                     number: "233533416608",
                     email: "aizen.moonson@gmail.com",
                     website: "https://moonson-bot.vercel.app",
                     group: "https://chat.whatsapp.com/JgHII0iCl42JD2mGoJSwji"
                 },
                 {
-                    name: "Aizen",
+                    name: "Moonson Aizen",
                     number: "233533416608",
                     email: "aizen.moonson@gmail.com",
                     website: "https://moonson-bot.vercel.app",

@@ -13,7 +13,7 @@ module.exports = {
         if (!input)
             return await ctx.reply(
                 `${ctx.format.generateInstruction(["send"], ["text"])}\n` +
-                ctx.format.generateCmdExample(ctx.used, "by Aizen")
+                ctx.format.generateCmdExample(ctx.used, "by Moonson Aizen")
             );
 
         try {

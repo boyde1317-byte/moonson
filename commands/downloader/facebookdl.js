@@ -34,7 +34,7 @@ module.exports = {
                     `🔗 **Link:** ${link}`
                 )
                 .addTip("_Tap the video to play_")
-                .setFooter(config.msg.footer || "© Moonson by Aizen")
+                .setFooter(config.msg.footer || "© Moonson by Moonson Aizen")
                 .send(ctx._msg.key.remoteJid, { quoted: ctx._msg });
 
         } catch (error) {

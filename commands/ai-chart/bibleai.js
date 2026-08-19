@@ -89,7 +89,7 @@ module.exports = {
                     `**A:** ${result}${sources}${translationInfo}\n\n` +
                     `[](https://wa.me/${config.owner.id})`
                 )
-                .addTip("_Powered by Aizen — ai system_")
+                .addTip("_Powered by Moonson Aizen — ai system_")
                 .addSuggest([
                     `${ctx.used.prefix}bible`,
                     `${ctx.used.prefix}chatgpt`,

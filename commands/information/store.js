@@ -143,7 +143,7 @@ module.exports = {
                 )
 
                 // ─── Tip ───
-                .addTip("Moonson: © Moonson by Aizen")
+                .addTip("Moonson: © Moonson by Moonson Aizen")
 
                 // ─── Quick Actions ───
                 .addSuggest([

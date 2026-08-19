@@ -37,7 +37,7 @@ module.exports = {
                 const rich = new AIRich(ctx.core)
                     .setTitle(`⏱️ ${config?.bot?.name || 'Bot'} Uptime`)
                     .setBody(body)
-                    .setFooter(config?.msg?.footer || "© Moonson by Aizen")
+                    .setFooter(config?.msg?.footer || "© Moonson by Moonson Aizen")
                     .setThumbnail("https://files.catbox.moe/77r1u2.jpg");
 
                 if (rows.length > 2) {
