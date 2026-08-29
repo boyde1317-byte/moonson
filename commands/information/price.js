@@ -14,12 +14,12 @@ module.exports = {
             `› Bot is FREE on GitHub\n` +
             `› You pay for HOSTING & SUPPORT\n\n` +
             `› Hosting Plans\n` +
-            `  Daily   │ 3,000 TZS\n` +
-            `  Weekly  │ 8,000 TZS\n` +
-            `  Monthly │ 13,000 TZS\n\n` +
+            `  Daily   │ 20 GHS\n` +
+            `  Weekly  │ 55 GHS\n` +
+            `  Monthly │ 120 GHS\n\n` +
             `› Premium Access\n` +
-            `  Weekly  │ 5,000 TZS\n` +
-            `  Monthly │ 10,000 TZS\n\n` +
+            `  Weekly  │ 35 GHS\n` +
+            `  Monthly │ 65 GHS\n\n` +
             `› Payment: Halopesa · M-Pesa · Airtel · Tigo · Mixx · TTCL\n` +
             `› Contact: wa.me/${ownerNumber}\n\n` +
             `${config.msg?.footer || "© Moonson by Moonson Aizen"}`;

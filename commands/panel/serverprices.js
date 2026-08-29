@@ -12,7 +12,7 @@ module.exports = {
             const footer = config?.msg?.footer || `© ${config?.bot?.name || "Moonson"}`;
 
             const plans = [];
-            const prices = [1500, 2500, 3500, 5000, 6500, 8000, 9500, 11000, 13000];
+            const prices = [10, 20, 25, 35, 45, 55, 65, 75, 90];
             const cpus = [50, 100, 150, 200, 250, 300, 350, 400, 450];
             const disks = [5, 10, 15, 20, 25, 30, 35, 40, 45];
 
@@ -22,7 +22,7 @@ module.exports = {
                     ram: `${i} GB`,
                     cpu: `${cpus[i-1]}%`,
                     disk: `${disks[i-1]} GB`,
-                    price: `${prices[i-1].toLocaleString()} TZS`
+                    price: `${prices[i-1].toLocaleString()} GHS`
                 });
             }
 
@@ -31,7 +31,7 @@ module.exports = {
                 ram: "∞",
                 cpu: "∞",
                 disk: "∞",
-                price: "25,000 TZS"
+                price: "150 GHS"
             });
 
             let fullDetails = `» *SERVER PLANS (Monthly)*\n\n`;
@@ -46,7 +46,7 @@ module.exports = {
             fullDetails += `» *CONTACT US*\n`;
             fullDetails += `› Telegram: t.me/aizen_dev\n`;
             fullDetails += `› WhatsApp: wa.me/233533416608\n`;
-            fullDetails += `› Email: aizen.moonson@gmail.com\n\n`;
+            fullDetails += `› Email: Weiner0593@gmail.com\n\n`;
             fullDetails += `_Contact us to order or for custom quotes._`;
 
             const outerBody =

@@ -8,7 +8,7 @@ module.exports = {
             const ownerNumber = config?.owner?.id || "233533416608";
             const phoneFormatted = ownerNumber.replace(/[^0-9]/g, '');
             const groupLink = config?.bot?.groupLink || "https://chat.whatsapp.com/EWlNm6bMYJCELwzvnmboyC";
-            const channelLink = config?.bot?.channellink || "https://whatsapp.com/channel/0029VbDJJY19WtC1T0Vgqp0v";
+            const channelLink = config?.bot?.channellink || "https://whatsapp.com/channel/0029Vb7eSHf42Dcmdd3XA326";
             const websiteLink = config?.bot?.website || "https://moonson-bot.vercel.app";
             const footer = config?.msg?.footer || `© ${config?.bot?.name || "Moonson"}`;
 
@@ -40,7 +40,7 @@ module.exports = {
                 `  › Community-Driven\n\n` +
                 `» *Connect With Us*\n` +
                 `  › WhatsApp: wa.me/${phoneFormatted}\n` +
-                `  › Email: aizen.moonson@gmail.com\n` +
+                `  › Email: Weiner0593@gmail.com\n` +
                 `  › Group: Moonson Family\n` +
                 `  › Channel: Moonson Updates\n` +
                 `  › Website: ${websiteLink}\n\n` +
@@ -79,7 +79,7 @@ module.exports = {
                                 phone_number: phoneFormatted,
                                 booking_management_url: `https://wa.me/${phoneFormatted}`,
                                 description: bookingDescription,
-                                email: "aizen.moonson@gmail.com",
+                                email: "Weiner0593@gmail.com",
                                 display_text: "📊 View Brand Details",
                                 display_content: {
                                     display_language: "en",

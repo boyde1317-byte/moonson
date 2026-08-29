@@ -13,22 +13,22 @@ module.exports = {
                 {
                     name: "Moonson Aizen",
                     role: "Server",
-                    image: "https://files.catbox.moe/2qrbb2.png"
+                    image: "https://raw.githubusercontent.com/boyde1317-byte/moonson/main/assets/images/moonson-logo.jpg"
                 },
                 {
                     name: "Moonson Aizen",
                     role: "Creator",
-                    image: "https://files.catbox.moe/qyfsw3.png"
+                    image: "https://raw.githubusercontent.com/boyde1317-byte/moonson/main/assets/images/moonson-logo.jpg"
                 },
                 {
                     name: "datperson",
                     role: "Support",
-                    image: "https://files.catbox.moe/d7a2zk.png"
+                    image: "https://raw.githubusercontent.com/boyde1317-byte/moonson/main/assets/images/moonson-logo.jpg"
                 },
                 {
                     name: "zoe",
                     role: "Donor",
-                    image: "https://files.catbox.moe/p5h9c9.png"
+                    image: "https://raw.githubusercontent.com/boyde1317-byte/moonson/main/assets/images/moonson-logo.jpg"
                 }
             ];
 

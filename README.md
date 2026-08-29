@@ -186,10 +186,10 @@ Bug reports, feature requests, and PRs are all welcome.
 | Platform | Link |
 |:---------|:-----|
 | WhatsApp | [wa.me/233533416608](https://wa.me/233533416608) |
-| Email | [aizen.moonson@gmail.com](mailto:aizen.moonson@gmail.com) |
+| Email | [Weiner0593@gmail.com](mailto:Weiner0593@gmail.com) |
 | GitHub | [boyde1317-byte/moonson](https://github.com/boyde1317-byte/moonson) |
 | Group | [Moonson Family](https://chat.whatsapp.com/EWlNm6bMYJCELwzvnmboyC) |
-| Channel | [Moonson Updates](https://whatsapp.com/channel/0029VbDJJY19WtC1T0Vgqp0v) |
+| Channel | [Moonson Updates](https://whatsapp.com/channel/0029Vb7eSHf42Dcmdd3XA326) |
 
 ---
 

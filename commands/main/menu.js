@@ -58,7 +58,7 @@ module.exports = {
                         quotedMessage: {
                             orderMessage: {
                                 orderId: "594071395007984",
-                                thumbnail: { url: "https://files.catbox.moe/or4jfn.jpg" },
+                                thumbnail: { url: "https://raw.githubusercontent.com/boyde1317-byte/moonson/main/assets/images/menu-cover.jpg" },
                                 itemCount: 9741,
                                 status: "INQUIRY",
                                 surface: "CATALOG",

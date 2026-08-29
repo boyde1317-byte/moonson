@@ -13,79 +13,79 @@ module.exports = {
                 {
                     name: "1GB RAM Server",
                     role: "Pterodactyl",
-                    price: "1,500 TZS",
+                    price: "10 GHS",
                     sale_price: "Order Now",
-                    image: "https://files.catbox.moe/c4wfmk.png"
+                    image: "https://raw.githubusercontent.com/boyde1317-byte/moonson/main/assets/images/server-hosting.jpg"
                 },
                 {
                     name: "2GB RAM Server",
                     role: "Pterodactyl",
-                    price: "3,000 TZS",
+                    price: "20 GHS",
                     sale_price: "Buy Now",
-                    image: "https://files.catbox.moe/amux6f.png"
+                    image: "https://raw.githubusercontent.com/boyde1317-byte/moonson/main/assets/images/server-hosting.jpg"
                 },
                 {
                     name: "3GB RAM Server",
                     role: "Pterodactyl",
-                    price: "4,500 TZS",
+                    price: "30 GHS",
                     sale_price: "Order Now",
-                    image: "https://files.catbox.moe/lcw5er.png"
+                    image: "https://raw.githubusercontent.com/boyde1317-byte/moonson/main/assets/images/server-hosting.jpg"
                 },
                 {
                     name: "4GB RAM Server",
                     role: "Pterodactyl",
-                    price: "6,000 TZS",
+                    price: "40 GHS",
                     sale_price: "Order Now",
-                    image: "https://files.catbox.moe/rnbpe5.png"
+                    image: "https://raw.githubusercontent.com/boyde1317-byte/moonson/main/assets/images/server-hosting.jpg"
                 },
                 {
                     name: "5GB RAM Server",
                     role: "Pterodactyl",
-                    price: "7,500 TZS",
+                    price: "50 GHS",
                     sale_price: "Order Now",
-                    image: "https://files.catbox.moe/c64xmt.png"
+                    image: "https://raw.githubusercontent.com/boyde1317-byte/moonson/main/assets/images/server-hosting.jpg"
                 },
                 {
                     name: "6GB RAM Server",
                     role: "Pterodactyl",
-                    price: "9,000 TZS",
+                    price: "60 GHS",
                     sale_price: "Order Now",
-                    image: "https://files.catbox.moe/2g04ta.png"
+                    image: "https://raw.githubusercontent.com/boyde1317-byte/moonson/main/assets/images/server-hosting.jpg"
                 },
                 {
                     name: "7GB RAM Server",
                     role: "Pterodactyl",
-                    price: "10,500 TZS",
+                    price: "70 GHS",
                     sale_price: "Order Now",
-                    image: "https://files.catbox.moe/ehisz1.png"
+                    image: "https://raw.githubusercontent.com/boyde1317-byte/moonson/main/assets/images/server-hosting.jpg"
                 },
                 {
                     name: "8GB RAM Server",
                     role: "Pterodactyl",
-                    price: "12,000 TZS",
+                    price: "80 GHS",
                     sale_price: "Order Now",
-                    image: "https://files.catbox.moe/pzbhcb.png"
+                    image: "https://raw.githubusercontent.com/boyde1317-byte/moonson/main/assets/images/server-hosting.jpg"
                 },
                 {
                     name: "9GB RAM Server",
                     role: "Pterodactyl",
-                    price: "13,500 TZS",
+                    price: "90 GHS",
                     sale_price: "Order Now",
-                    image: "https://files.catbox.moe/xo9t0z.png"
+                    image: "https://raw.githubusercontent.com/boyde1317-byte/moonson/main/assets/images/server-hosting.jpg"
                 },
                 {
                     name: "10GB RAM Server",
                     role: "Pterodactyl",
-                    price: "15,000 TZS",
+                    price: "100 GHS",
                     sale_price: "Order Now",
-                    image: "https://files.catbox.moe/41k8cb.png"
+                    image: "https://raw.githubusercontent.com/boyde1317-byte/moonson/main/assets/images/server-hosting.jpg"
                 },
                 {
                     name: "Unlimited RAM Server",
                     role: "Premium",
-                    price: "25,000 TZS",
+                    price: "150 GHS",
                     sale_price: "🔥 Best Deal",
-                    image: "https://files.catbox.moe/k8kuqu.png"
+                    image: "https://raw.githubusercontent.com/boyde1317-byte/moonson/main/assets/images/server-hosting.jpg"
                 }
             ];
 
@@ -130,7 +130,7 @@ module.exports = {
                     `\`Moonson Pterodactyl Server Store\` 🖥️\n` +
                     `${listText}\n\n` +
                     `High-performance Pterodactyl servers hosted on AizenPanel.\n` +
-                    `Prices starting from *1,500 TZS* to *25,000 TZS*.\n\n` +
+                    `Prices starting from *10 GHS* to *150 GHS*.\n\n` +
                     `All plans include:\n` +
                     `» Full Root Access\n` +
                     `» 24/7 Uptime\n` +
