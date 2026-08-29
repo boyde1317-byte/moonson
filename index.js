@@ -38,6 +38,31 @@ try {
     process.exit(1);
 }
 
+// ── Merge environment variables into config ──
+// Secrets and per-deployment values come from .env, safe defaults from config.json
+if (process.env.BOT_NUMBER) {
+    config.bot = config.bot || {};
+    config.bot.botNumber = process.env.BOT_NUMBER;
+    config.bot.phoneNumber = process.env.BOT_NUMBER;
+}
+if (process.env.OWNER_NUMBER) {
+    config.owner = config.owner || {};
+    config.owner.id = process.env.OWNER_NUMBER;
+}
+if (process.env.GROUP_LINK) {
+    config.bot = config.bot || {};
+    config.bot.groupLink = process.env.GROUP_LINK;
+}
+if (process.env.CHANNEL_LINK) {
+    config.bot = config.bot || {};
+    config.bot.channellink = process.env.CHANNEL_LINK;
+}
+if (process.env.PTERO_PANEL_URL || process.env.PTERO_API_KEY) {
+    config.pterodactyl = config.pterodactyl || {};
+    if (process.env.PTERO_PANEL_URL) config.pterodactyl.panelUrl = process.env.PTERO_PANEL_URL;
+    if (process.env.PTERO_API_KEY) config.pterodactyl.apiKey = process.env.PTERO_API_KEY;
+}
+
 // ── Set up global variables ──
 Object.assign(global, {
     axios,
@@ -73,7 +98,7 @@ CFonts.say(`${pkg.description} - By ${pkg.author}`, {
 
 // ── Optional HTTP server ──
 if (config.system?.useServer) {
-    const port = process.env.PORT || config.system.port || 3000;
+    const port = process.env.PORT || config.system?.port || 3000;
     http.createServer((_, res) => {
         res.end(`${pkg.name} is running on port ${port}`);
     }).listen(port, () => {
@@ -119,12 +144,13 @@ async function startBot() {
     }
 
     // ── Check phone number ──
-    if (!config.bot?.phoneNumber || config.bot.phoneNumber.trim() === '') {
-        log.error("Phone number is missing in config.json!");
-        log.error('Please add "phoneNumber" under "bot" in config.json.');
+    const botNumber = config.bot?.botNumber || config.bot?.phoneNumber || '';
+    if (botNumber.trim() === '') {
+        log.error("Bot number is missing!");
+        log.error('Set BOT_NUMBER in your .env file.');
         process.exit(1);
     }
-    log.success(`Phone: ${config.bot.phoneNumber}`);
+    log.success(`Phone: ${botNumber}`);
     log.success(`Prefix: ${config.system?.prefix || "."}`);
 
     // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

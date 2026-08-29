@@ -1,11 +1,7 @@
 {
   "bot": {
     "name": "Moonson",
-    "phoneNumber": "233533416608",
     "thumbnail": "https://media.base44.com/images/public/6a6faa067c8ee05c592007b5/a174ce51a_generated_image.png",
-    "groupjid": "",
-    "groupLink": "https://chat.whatsapp.com/Hd5ypF26Wr9ETljOqJGHAS",
-    "channellink": "https://whatsapp.com/channel/0029Vb7eSHf42Dcmdd3XA326",
     "telegram": "https://t.me/DeathCore_Xr"
   },
   "msg": {
@@ -33,23 +29,8 @@
   "owner": {
     "name": "Moonson Aizen",
     "organization": "Moonson",
-    "id": "233533416608",
     "report": true,
-    "co": [
-      {
-        "name": "Moonson Aizen",
-        "organization": "Moonson",
-        "id": "233533416608",
-        "report": false
-      },
-      {
-        "name": "Moonson",
-        "organization": "Moonson",
-        "id": "233533416608",
-        "report": false,
-        "invisible": false
-      }
-    ]
+    "co": []
   },
   "sticker": {
     "packname": "Moonson",
@@ -72,19 +53,17 @@
     "unavailableAtNight": false,
     "useCoin": true,
     "usePairingCode": true,
-    "customPairingCode": "MOONSON1", 
+    "customPairingCode": "MOONSON1",
     "useStore": false,
     "useServer": false,
     "prefix": "."
   },
   "pterodactyl": {
-    "panelUrl": "https://panel.username.org",
-    "apiKey": "ptla_xxxxx",
     "defaultEgg": 1,
     "defaultLocation": 1,
     "defaultNest": 5
   },
   "note": {
-    "message": "⚠️ This is only for server seller people. Do not use this if you are not a server seller." 
+    "message": "⚠️ This is only for server seller people. Do not use this if you are not a server seller."
   }
 }

@@ -68,8 +68,14 @@ The source code is **free and open source**. Hosting services are available:
 git clone https://github.com/boyde1317-byte/moonson.git
 cd moonson
 npm install
+
+# Set up your environment variables
+cp .env.example .env
+# Edit .env — add your BOT_NUMBER, OWNER_NUMBER, GROUP_LINK, etc.
+
+# Create config from safe defaults
 cp config.example.json config.json
-# Edit config.json with your number and preferences
+
 npm start
 ```
 
@@ -79,19 +85,41 @@ When the bot starts, you'll get a **pairing code** (default: `MOONSON1`) — ent
 
 ## ⚙️ Configuration
 
-Key fields in `config.json`:
+### Environment Variables (`.env`)
+
+Secrets and per-deployment values go in `.env`:
+
+```bash
+# Required
+BOT_NUMBER=233533416608          # Your WhatsApp number (country code, no +)
+OWNER_NUMBER=233533416608         # Owner's WhatsApp number
+
+# Links
+GROUP_LINK=https://chat.whatsapp.com/...
+CHANNEL_LINK=https://whatsapp.com/channel/...
+
+# Newsletter
+NEWSLETTER_ID=120363406397452589@newsletter
+NEWSLETTER_NAME="Moonson"
+
+# Pterodactyl (optional)
+PTERO_PANEL_URL=https://panel.example.org
+PTERO_API_KEY=ptla_xxxxx
+```
+
+### Config File (`config.json`)
+
+Safe defaults and branding stay in `config.json`:
 
 ```json
 {
   "bot": {
     "name": "Moonson",
-    "phoneNumber": "233533416608",
-    "groupLink": "your-group-link",
-    "channellink": "your-channel-link"
+    "telegram": "https://t.me/DeathCore_Xr"
   },
   "owner": {
     "name": "Moonson Aizen",
-    "id": "233533416608"
+    "organization": "Moonson"
   },
   "system": {
     "prefix": ".",

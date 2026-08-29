@@ -31,7 +31,7 @@ const parsePrefix = function(prefix) {
 const bot = new Client({
     auth: {
         dir: directory.auth,
-        phoneNumber: botConfig.phoneNumber,
+        phoneNumber: botConfig.botNumber || botConfig.phoneNumber,
         usePairingCode: system.usePairingCode,
         customPairingCode: system.customPairingCode,
         useStore: system.useStore
