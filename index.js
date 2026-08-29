@@ -73,7 +73,7 @@ CFonts.say(`${pkg.description} - By ${pkg.author}`, {
 
 // ── Optional HTTP server ──
 if (config.system?.useServer) {
-    const port = config.system.port || 3000;
+    const port = process.env.PORT || config.system.port || 3000;
     http.createServer((_, res) => {
         res.end(`${pkg.name} is running on port ${port}`);
     }).listen(port, () => {

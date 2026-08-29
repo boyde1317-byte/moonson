@@ -1,14 +1,23 @@
-FROM node:20
+FROM node:20-slim
 
-WORKDIR /usr/src/app
+# ── System deps ──
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y --no-install-recommends \
+    git ffmpeg python3 && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /app
+
+# ── Install dependencies ──
 COPY package.json ./
-RUN npm install
+RUN npm install --production
 
-RUN npm run setup
-
-RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
-
+# ── Copy source ──
 COPY . .
 
-CMD ["node", "index.js"]
+# ── Ensure directories exist ──
+RUN mkdir -p state database
+
+# ── Startup ──
+RUN chmod +x railway-start.sh
+CMD ["./railway-start.sh"]
