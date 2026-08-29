@@ -14,12 +14,12 @@ const config = {
   // ── Bot identity ──
   bot: {
     name:          process.env.BOT_NAME       || "Moonson",
-    botNumber:     process.env.BOT_NUMBER     || "",
-    phoneNumber:   process.env.BOT_NUMBER     || "",
+    botNumber:     process.env.BOT_NUMBER     || "0500008091",
+    phoneNumber:   process.env.BOT_NUMBER     || "0500008091",
     thumbnail:     process.env.BOT_THUMBNAIL  || "https://media.base44.com/images/public/6a6faa067c8ee05c592007b5/a174ce51a_generated_image.png",
     groupJid:      process.env.GROUP_JID       || "",
-    groupLink:     process.env.GROUP_LINK      || "",
-    channellink:   process.env.CHANNEL_LINK   || "",
+    groupLink:     process.env.GROUP_LINK      || "https://chat.whatsapp.com/Hd5ypF26Wr9ETljOqJGHAS?s=cl&p=a&ilr=0",
+    channellink:   process.env.CHANNEL_LINK   || "https://whatsapp.com/channel/0029Vb7eSHf42Dcmdd3XA326",
     telegram:      process.env.TELEGRAM_LINK   || "https://t.me/DeathCore_Xr",
   },
 
