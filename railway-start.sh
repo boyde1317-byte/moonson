@@ -1,23 +1,22 @@
 #!/bin/bash
 # ── Railway startup script ──
-# Creates config.json from config.example.json if missing
-# Secrets and per-deployment values come from environment variables (.env / Railway vars)
-# Environment variables override config.json at runtime (see index.js)
+# All config is driven by environment variables — no config.json needed.
+# Set your env vars in the Railway dashboard (or .env file for local dev).
 
 set -e
 
-echo "[railway] Starting Moonson deployment..."
+echo "[railway] Starting Moonson..."
 
 # ── Ensure directories exist ──
 mkdir -p /app/state /app/database
 
-# ── Create config.json from example if missing ──
-if [ ! -f /app/config.json ]; then
-    echo "[railway] Creating config.json from config.example.json..."
-    cp /app/config.example.json /app/config.json
-    echo "[railway] Safe defaults loaded. Override with env vars: BOT_NUMBER, OWNER_NUMBER, GROUP_LINK, CHANNEL_LINK, PTERO_PANEL_URL, PTERO_API_KEY"
+# ── Check required env var ──
+if [ -z "$BOT_NUMBER" ]; then
+    echo "[railway] ERROR: BOT_NUMBER is not set!"
+    echo "[railway] Set it in the Railway Variables tab."
+    exit 1
 fi
 
-# ── Start the bot ──
+echo "[railway] Bot number: $BOT_NUMBER"
 echo "[railway] Launching Moonson..."
 exec node index.js

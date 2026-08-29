@@ -71,10 +71,7 @@ npm install
 
 # Set up your environment variables
 cp .env.example .env
-# Edit .env — add your BOT_NUMBER, OWNER_NUMBER, GROUP_LINK, etc.
-
-# Create config from safe defaults
-cp config.example.json config.json
+# Edit .env — set your BOT_NUMBER at minimum
 
 npm start
 ```
@@ -85,47 +82,36 @@ When the bot starts, you'll get a **pairing code** (default: `MOONSON1`) — ent
 
 ## ⚙️ Configuration
 
-### Environment Variables (`.env`)
+Everything is driven by environment variables — **no `config.json` needed**.
 
-Secrets and per-deployment values go in `.env`:
+Copy `.env.example` → `.env` and override what you need. Every value has a built-in default, so you only need to set what's specific to your deployment.
+
+### Required
 
 ```bash
-# Required
 BOT_NUMBER=233533416608          # Your WhatsApp number (country code, no +)
-OWNER_NUMBER=233533416608         # Owner's WhatsApp number
-
-# Links
-GROUP_LINK=https://chat.whatsapp.com/...
-CHANNEL_LINK=https://whatsapp.com/channel/...
-
-# Newsletter
-NEWSLETTER_ID=120363406397452589@newsletter
-NEWSLETTER_NAME="Moonson"
-
-# Pterodactyl (optional)
-PTERO_PANEL_URL=https://panel.example.org
-PTERO_API_KEY=ptla_xxxxx
 ```
 
-### Config File (`config.json`)
+### Common Overrides
 
-Safe defaults and branding stay in `config.json`:
+```bash
+OWNER_NUMBER=233533416608         # Owner's WhatsApp number
+GROUP_LINK=https://chat.whatsapp.com/...
+CHANNEL_LINK=https://whatsapp.com/channel/...
+NEWSLETTER_ID=120363406397452589@newsletter
+NEWSLETTER_NAME="Moonson"
+PREFIX="."
+TIMEZONE="Africa/Accra"
+CUSTOM_PAIRING_CODE="MOONSON1"
+```
 
-```json
-{
-  "bot": {
-    "name": "Moonson",
-    "telegram": "https://t.me/DeathCore_Xr"
-  },
-  "owner": {
-    "name": "Moonson Aizen",
-    "organization": "Moonson"
-  },
-  "system": {
-    "prefix": ".",
-    "usePairingCode": true,
-    "customPairingCode": "MOONSON1",
-    "timeZone": "Africa/Accra"
+### All Variables
+
+See `.env.example` for the full list with defaults — bot identity, message templates, system behavior, sticker config, and optional Pterodactyl settings.
+
+### For Railway/Heroku
+
+Set the same variables in the platform's environment variables dashboard. The `.env` file is only for local development."
   },
   "sticker": {
     "packname": "Moonson",

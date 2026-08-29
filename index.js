@@ -27,41 +27,8 @@ axiosRetry(axios, {
         Math.pow(2, retryCount - 1) * 1000 + Math.random() * 500
 });
 
-// ── Load config.json manually ──
-const configPath = path.resolve(__dirname, "config.json");
-let config = {};
-try {
-    const configData = fs.readFileSync(configPath, "utf8");
-    config = JSON.parse(configData);
-} catch (e) {
-    console.error(util.styleText("red", "[x]"), "Failed to load config.json:", e.message);
-    process.exit(1);
-}
-
-// ── Merge environment variables into config ──
-// Secrets and per-deployment values come from .env, safe defaults from config.json
-if (process.env.BOT_NUMBER) {
-    config.bot = config.bot || {};
-    config.bot.botNumber = process.env.BOT_NUMBER;
-    config.bot.phoneNumber = process.env.BOT_NUMBER;
-}
-if (process.env.OWNER_NUMBER) {
-    config.owner = config.owner || {};
-    config.owner.id = process.env.OWNER_NUMBER;
-}
-if (process.env.GROUP_LINK) {
-    config.bot = config.bot || {};
-    config.bot.groupLink = process.env.GROUP_LINK;
-}
-if (process.env.CHANNEL_LINK) {
-    config.bot = config.bot || {};
-    config.bot.channellink = process.env.CHANNEL_LINK;
-}
-if (process.env.PTERO_PANEL_URL || process.env.PTERO_API_KEY) {
-    config.pterodactyl = config.pterodactyl || {};
-    if (process.env.PTERO_PANEL_URL) config.pterodactyl.panelUrl = process.env.PTERO_PANEL_URL;
-    if (process.env.PTERO_API_KEY) config.pterodactyl.apiKey = process.env.PTERO_API_KEY;
-}
+// ── Load config (env-driven, no config.json needed) ──
+const config = require("./config.js");
 
 // ── Set up global variables ──
 Object.assign(global, {
@@ -98,7 +65,7 @@ CFonts.say(`${pkg.description} - By ${pkg.author}`, {
 
 // ── Optional HTTP server ──
 if (config.system?.useServer) {
-    const port = process.env.PORT || config.system?.port || 3000;
+    const port = config.system.port;
     http.createServer((_, res) => {
         res.end(`${pkg.name} is running on port ${port}`);
     }).listen(port, () => {
@@ -147,7 +114,7 @@ async function startBot() {
     const botNumber = config.bot?.botNumber || config.bot?.phoneNumber || '';
     if (botNumber.trim() === '') {
         log.error("Bot number is missing!");
-        log.error('Set BOT_NUMBER in your .env file.');
+        log.error('Set BOT_NUMBER in your .env file or environment.');
         process.exit(1);
     }
     log.success(`Phone: ${botNumber}`);
