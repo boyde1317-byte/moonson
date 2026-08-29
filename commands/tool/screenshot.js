@@ -11,7 +11,7 @@ module.exports = {
         if (!url)
             return await ctx.reply(
                 `${ctx.format.generateInstruction(["send"], ["text"])}\n` +
-                ctx.format.generateCmdExample(ctx.used, "https://moonson.vercel.app")
+                ctx.format.generateCmdExample(ctx.used, "https://infomoonson.vercel.app")
             );
 
         if (!ctx.helper.isUrl(url)) return await ctx.reply(ctx.format.info(config.msg.invalidUrl));

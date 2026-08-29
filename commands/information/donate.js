@@ -7,7 +7,7 @@ module.exports = {
     code: async (ctx) => {
         const prefix = ctx.used.prefix;
         const ownerNumber = config.owner?.id || "233533416608";
-        const donateLink = "https://moonson.vercel.app/#pricing";
+        const donateLink = "https://infomoonson.vercel.app/#pricing";
 
         const msg =
             `› SUPPORT ${config.bot?.name || "Moonson"}\n\n` +

@@ -14,21 +14,21 @@ module.exports = {
                     name: "Moonson Aizen",
                     number: "233533416608",
                     email: "Weiner0593@gmail.com",
-                    website: "https://moonson.vercel.app",
+                    website: "https://infomoonson.vercel.app",
                     group: "https://chat.whatsapp.com/JgHII0iCl42JD2mGoJSwji"
                 },
                 {
                     name: "Moonson Aizen",
                     number: "233533416608",
                     email: "Weiner0593@gmail.com",
-                    website: "https://moonson.vercel.app",
+                    website: "https://infomoonson.vercel.app",
                     group: "https://chat.whatsapp.com/JgHII0iCl42JD2mGoJSwji"
                 },
                 {
                     name: "Moonson Aizen",
                     number: "233533416608",
                     email: "Weiner0593@gmail.com",
-                    website: "https://moonson.vercel.app",
+                    website: "https://infomoonson.vercel.app",
                     group: "https://chat.whatsapp.com/JgHII0iCl42JD2mGoJSwji"
                 }
             ];
@@ -73,7 +73,7 @@ module.exports = {
                                     start_datetime: new Date().toISOString(),
                                     end_datetime: new Date(Date.now() + 600000).toISOString(),
                                     location: config?.bot?.name || "Moonson",
-                                    booking_url: "https://moonson.vercel.app",
+                                    booking_url: "https://infomoonson.vercel.app",
                                     phone_number: mainNumber,
                                     booking_management_url: `https://wa.me/${mainNumber}`,
                                     description: bookingText,
