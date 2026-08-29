@@ -7,7 +7,7 @@ module.exports = {
         try {
             const ownerNumber = config?.owner?.id || "233533416608";
             const phoneFormatted = ownerNumber.replace(/[^0-9]/g, '');
-            const groupLink = config?.bot?.groupLink || "https://chat.whatsapp.com/EWlNm6bMYJCELwzvnmboyC";
+            const groupLink = config?.bot?.groupLink || "https://chat.whatsapp.com/Hd5ypF26Wr9ETljOqJGHAS";
             const channelLink = config?.bot?.channellink || "https://whatsapp.com/channel/0029Vb7eSHf42Dcmdd3XA326";
             const websiteLink = config?.bot?.website || "https://info-moonson.vercel.app";
             const footer = config?.msg?.footer || `© ${config?.bot?.name || "Moonson"}`;

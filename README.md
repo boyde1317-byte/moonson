@@ -189,7 +189,7 @@ Bug reports, feature requests, and PRs are all welcome.
 | Telegram | [t.me/DeathCore_Xr](https://t.me/DeathCore_Xr) |
 | Email | [Weiner0593@gmail.com](mailto:Weiner0593@gmail.com) |
 | GitHub | [boyde1317-byte/moonson](https://github.com/boyde1317-byte/moonson) |
-| Group | [Moonson Family](https://chat.whatsapp.com/EWlNm6bMYJCELwzvnmboyC) |
+| Group | [Moonson Family](https://chat.whatsapp.com/Hd5ypF26Wr9ETljOqJGHAS) |
 | Channel | [Moonson Updates](https://whatsapp.com/channel/0029Vb7eSHf42Dcmdd3XA326) |
 
 ---
