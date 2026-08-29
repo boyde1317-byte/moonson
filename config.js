@@ -80,7 +80,7 @@ const config = {
     unavailableAtNight:      bool(process.env.UNAVAILABLE_AT_NIGHT,   false),
     useCoin:                 bool(process.env.USE_COIN,                true),
     usePairingCode:          bool(process.env.USE_PAIRING_CODE,         true),
-    customPairingCode:       process.env.CUSTOM_PAIRING_CODE          || "23353341",
+    customPairingCode:       process.env.CUSTOM_PAIRING_CODE          || null,
     useStore:                bool(process.env.USE_STORE,               false),
     useServer:               bool(process.env.USE_SERVER,              false),
     prefix:                  process.env.PREFIX                       || ".",
