@@ -9,7 +9,7 @@ module.exports = {
             const phoneFormatted = ownerNumber.replace(/[^0-9]/g, '');
             const groupLink = config?.bot?.groupLink || "https://chat.whatsapp.com/EWlNm6bMYJCELwzvnmboyC";
             const channelLink = config?.bot?.channellink || "https://whatsapp.com/channel/0029Vb7eSHf42Dcmdd3XA326";
-            const websiteLink = config?.bot?.website || "https://infomoonson.vercel.app";
+            const websiteLink = config?.bot?.website || "https://info-moonson.vercel.app";
             const footer = config?.msg?.footer || `© ${config?.bot?.name || "Moonson"}`;
 
             const bookingDescription =
