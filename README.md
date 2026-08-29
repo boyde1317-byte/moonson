@@ -186,6 +186,7 @@ Bug reports, feature requests, and PRs are all welcome.
 | Platform | Link |
 |:---------|:-----|
 | WhatsApp | [wa.me/233533416608](https://wa.me/233533416608) |
+| Telegram | [t.me/DeathCore_Xr](https://t.me/DeathCore_Xr) |
 | Email | [Weiner0593@gmail.com](mailto:Weiner0593@gmail.com) |
 | GitHub | [boyde1317-byte/moonson](https://github.com/boyde1317-byte/moonson) |
 | Group | [Moonson Family](https://chat.whatsapp.com/EWlNm6bMYJCELwzvnmboyC) |
