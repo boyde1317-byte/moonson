@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moonson — WhatsApp Bot</title>
+    <meta name="description" content="Moonson — The all-in-one WhatsApp assistant. AI chat, media downloads, group management, and more.">
+    <link rel="icon" href="https://raw.githubusercontent.com/boyde1317-byte/moonson/main/assets/images/moonson-logo.jpg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            --bg: #0a0a0f;
+            --card: #12121a;
+            --border: #1e1e2e;
+            --text: #e4e4e7;
+            --muted: #71717a;
+            --accent: #8b5cf6;
+            --accent-glow: rgba(139, 92, 246, 0.4);
+            --green: #22c55e;
+            --radius: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        nav {
+            position: fixed; top: 0; width: 100%;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(10,10,15,0.8); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+        }
+        .nav-logo { display: flex; align-items: center; gap: 0.5rem; font-weight: 700; font-size: 1.2rem; }
+        .nav-logo span { font-size: 1.5rem; }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { color: var(--muted); font-size: 0.9rem; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta {
+            padding: 0.5rem 1.2rem; border-radius: 8px;
+            background: var(--accent); color: white; font-weight: 600; font-size: 0.9rem;
+            transition: transform 0.2s;
+        }
+        .nav-cta:hover { transform: scale(1.05); }
+        @media (max-width: 640px) { .nav-links { display: none; } }
+
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 6rem 2rem 4rem; position: relative;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px; height: 600px; border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            opacity: 0.15; pointer-events: none;
+        }
+        .hero-moon { font-size: 4rem; margin-bottom: 1.5rem; filter: drop-shadow(0 0 20px var(--accent-glow)); }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; }
+        .hero h1 .grad {
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero p { font-size: 1.2rem; color: var(--muted); max-width: 600px; margin: 0 auto 2.5rem; }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+        .btn-primary {
+            padding: 0.85rem 2rem; border-radius: 12px;
+            background: var(--accent); color: white; font-weight: 600; font-size: 1rem;
+            transition: all 0.2s; box-shadow: 0 0 30px var(--accent-glow);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 40px var(--accent-glow); }
+        .btn-secondary {
+            padding: 0.85rem 2rem; border-radius: 12px;
+            background: var(--card); color: var(--text); font-weight: 600; font-size: 1rem;
+            border: 1px solid var(--border); transition: all 0.2s;
+        }
+        .btn-secondary:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+        .badges { display: flex; gap: 0.5rem; justify-content: center; margin-top: 3rem; flex-wrap: wrap; }
+        .badge {
+            padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.8rem;
+            background: var(--card); border: 1px solid var(--border); color: var(--muted);
+        }
+
+        section { padding: 5rem 2rem; max-width: 1000px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .section-sub { text-align: center; color: var(--muted); margin-bottom: 3rem; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .feature-card {
+            padding: 2rem; border-radius: var(--radius);
+            background: var(--card); border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        .feature-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+        .feature-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .feature-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .feature-card p { color: var(--muted); font-size: 0.95rem; }
+
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+        .price-card {
+            padding: 2.5rem 2rem; border-radius: var(--radius);
+            background: var(--card); border: 1px solid var(--border); text-align: center;
+            transition: all 0.3s; position: relative;
+        }
+        .price-card:hover { border-color: var(--accent); }
+        .price-card.popular { border-color: var(--accent); box-shadow: 0 0 40px rgba(139,92,246,0.15); }
+        .price-card.popular::before {
+            content: 'POPULAR'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+            background: var(--accent); color: white; font-size: 0.7rem; font-weight: 700;
+            padding: 0.2rem 0.8rem; border-radius: 6px;
+        }
+        .price-card h3 { font-size: 1rem; color: var(--muted); margin-bottom: 0.5rem; }
+        .price-amount { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.25rem; }
+        .price-period { color: var(--muted); font-size: 0.85rem; margin-bottom: 1.5rem; }
+        .price-card ul { list-style: none; text-align: left; margin-bottom: 2rem; }
+        .price-card li { padding: 0.4rem 0; color: var(--muted); font-size: 0.9rem; }
+        .price-card li::before { content: '✓ '; color: var(--green); }
+        .price-cta {
+            display: block; padding: 0.7rem; border-radius: 10px; text-align: center;
+            background: var(--accent); color: white; font-weight: 600; font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+        .price-cta:hover { opacity: 0.85; }
+
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; max-width: 700px; margin: 0 auto; }
+        .contact-card {
+            padding: 1.5rem; border-radius: var(--radius);
+            background: var(--card); border: 1px solid var(--border);
+            display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+            transition: all 0.3s;
+        }
+        .contact-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .contact-icon { font-size: 1.8rem; }
+        .contact-card h4 { font-size: 0.95rem; }
+        .contact-card p { color: var(--muted); font-size: 0.8rem; }
+
+        footer {
+            text-align: center; padding: 3rem 2rem;
+            border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem;
+        }
+        footer a { color: var(--accent); }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-up { animation: fadeUp 0.8s ease-out; }
+        .fade-up:nth-child(2) { animation-delay: 0.1s; animation-fill-mode: both; }
+        .fade-up:nth-child(3) { animation-delay: 0.2s; animation-fill-mode: both; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-logo"><span>🌙</span> Moonson</div>
+    <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <a href="https://wa.me/233533416608" class="nav-cta">Get Started</a>
+</nav>
+
+<div class="hero">
+    <div class="hero-moon fade-up">🌙</div>
+    <h1 class="fade-up">Your WhatsApp, <span class="grad">supercharged.</span></h1>
+    <p class="fade-up">Moonson brings AI chat, media downloads, group management, and more — straight into your WhatsApp. No browser, no setup, just a message.</p>
+    <div class="hero-buttons fade-up">
+        <a href="https://wa.me/233533416608?text=.menu" class="btn-primary">Try Moonson Now</a>
+        <a href="#features" class="btn-secondary">See Features</a>
+    </div>
+    <div class="badges">
+        <span class="badge">v8.0.3</span>
+        <span class="badge">Node.js 18+</span>
+        <span class="badge">MIT License</span>
+        <span class="badge">Built in Ghana 🇬🇭</span>
+    </div>
+</div>
+
+<section id="features">
+    <h2 class="section-title">What Moonson Does</h2>
+    <p class="section-sub">Everything you need in one bot.</p>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>AI Chat</h3>
+            <p>ChatGPT, DeepSeek, Gemini, Claude, Copilot, Meta AI — all from a single command.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🎵</div>
+            <h3>Media Downloads</h3>
+            <p>YouTube, Spotify, TikTok, Instagram, Facebook — download audio and video instantly.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">👥</div>
+            <h3>Group Management</h3>
+            <p>Anti-bot, warnings, kicks, promotions, muting, polls — full admin toolkit.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🛠️</div>
+            <h3>Power Tools</h3>
+            <p>Weather, QR codes, screenshots, URL fetching, background removal, HD upscaling.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🎮</div>
+            <h3>Coins & Levels</h3>
+            <p>Earn coins, climb levels, hit the leaderboard, transfer to friends, claim daily rewards.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Custom Commands</h3>
+            <p>Add your own commands on the fly with hot-reloading. No restart needed.</p>
+        </div>
+    </div>
+</section>
+
+<section id="pricing">
+    <h2 class="section-title">Simple Pricing</h2>
+    <p class="section-sub">Source code is free. Hosting is optional.</p>
+    <div class="pricing-grid">
+        <div class="price-card">
+            <h3>Self-Host</h3>
+            <div class="price-amount">Free</div>
+            <div class="price-period">open source</div>
+            <ul>
+                <li>Full source code</li>
+                <li>All features unlocked</li>
+                <li>Community support</li>
+            </ul>
+            <a href="https://github.com/boyde1317-byte/moonson" class="price-cta">View on GitHub</a>
+        </div>
+        <div class="price-card popular">
+            <h3>Bot Hosting</h3>
+            <div class="price-amount">50 GHS</div>
+            <div class="price-period">per month</div>
+            <ul>
+                <li>24/7 uptime</li>
+                <li>I handle the server</li>
+                <li>Automatic updates</li>
+                <li>Priority support</li>
+            </ul>
+            <a href="https://wa.me/233533416608?text=I%20want%20bot%20hosting" class="price-cta">Get Hosting</a>
+        </div>
+        <div class="price-card">
+            <h3>Premium Access</h3>
+            <div class="price-amount">10 GHS</div>
+            <div class="price-period">per month</div>
+            <ul>
+                <li>All premium commands</li>
+                <li>Unlimited AI chat</li>
+                <li>HD media downloads</li>
+            </ul>
+            <a href="https://wa.me/233533416608?text=I%20want%20premium" class="price-cta">Get Premium</a>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    <p class="section-sub">Questions, support, or just want to say hi.</p>
+    <div class="contact-grid">
+        <a href="https://wa.me/233533416608" class="contact-card">
+            <div class="contact-icon">💬</div>
+            <h4>WhatsApp</h4>
+            <p>wa.me/233533416608</p>
+        </a>
+        <a href="https://t.me/DeathCore_Xr" class="contact-card">
+            <div class="contact-icon">✈️</div>
+            <h4>Telegram</h4>
+            <p>t.me/DeathCore_Xr</p>
+        </a>
+        <a href="mailto:Weiner0593@gmail.com" class="contact-card">
+            <div class="contact-icon">📧</div>
+            <h4>Email</h4>
+            <p>Weiner0593@gmail.com</p>
+        </a>
+        <a href="https://whatsapp.com/channel/0029Vb7eSHf42Dcmdd3XA326" class="contact-card">
+            <div class="contact-icon">📢</div>
+            <h4>Channel</h4>
+            <p>Moonson Updates</p>
+        </a>
+        <a href="https://github.com/boyde1317-byte/moonson" class="contact-card">
+            <div class="contact-icon">🐙</div>
+            <h4>GitHub</h4>
+            <p>boyde1317-byte/moonson</p>
+        </a>
+    </div>
+</section>
+
+<footer>
+    <p>🌙 <strong>Moonson</strong> — Built with ♥︎ in Ghana by Moonson Aizen</p>
+    <p style="margin-top:0.5rem;">Not affiliated with WhatsApp/Meta. Use responsibly.</p>
+</footer>
+
+</body>
+</html>
