@@ -135,7 +135,7 @@ module.exports = {
             // TIME & GREETING
             // ========================================
             const nowEN = new Date(
-                new Date().toLocaleString("en-US", { timeZone: "Africa/Nairobi" })
+                new Date().toLocaleString("en-US", { timeZone: "Africa/Accra" })
             );
             const hour = nowEN.getHours();
             const greeting =
