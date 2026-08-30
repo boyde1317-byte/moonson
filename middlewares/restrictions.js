@@ -24,7 +24,7 @@ module.exports = (bot) => {
             condition: senderDb?.banned && ctx.used.command !== "owner",
             msg: config.msg.banned,
             buttons: [{
-                text: "Hubungi Owner",
+                text: "Contact Owner",
                 id: `${ctx.used.prefix}owner`
             }],
             reaction: "🚫"
@@ -43,10 +43,10 @@ module.exports = (bot) => {
             condition: config.system.privatePremiumOnly && !isOwner && !senderDb?.premium && !["price", "owner"].includes(ctx.used.command),
             msg: config.msg.privatePremiumOnly,
             buttons: [{
-                text: "Harga Premium",
+                text: "Premium Price",
                 id: `${ctx.used.prefix}price`
             }, {
-                text: "Hubungi Owner",
+                text: "Contact Owner",
                 id: `${ctx.used.prefix}owner`
             }],
             reaction: "💎"
@@ -67,7 +67,7 @@ module.exports = (bot) => {
             })(),
             msg: config.msg.botGroupMembership,
             buttons: [{
-                text: "Grup Bot",
+                text: "Bot Group",
                 id: `${ctx.used.prefix}botgroup`
             }],
             reaction: "🚫"
@@ -76,10 +76,10 @@ module.exports = (bot) => {
             condition: config.system.requireGroupSewa && isGroup && !isOwner && !["price", "owner"].includes(ctx.used.command) && groupDb?.sewa !== true,
             msg: config.msg.groupSewa,
             buttons: [{
-                text: "Harga Sewa",
+                text: "Rental Price",
                 id: `${ctx.used.prefix}price`
             }, {
-                text: "Hubungi Owner",
+                text: "Contact Owner",
                 id: `${ctx.used.prefix}owner`
             }],
             reaction: "🔒"

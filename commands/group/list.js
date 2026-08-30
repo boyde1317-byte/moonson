@@ -23,7 +23,7 @@ module.exports = [{
                     const daysLeft = ctx.format.convertMsToDuration(timeDiff, ["days", "hours"]);
                     resultText += `› @${userId} (${daysLeft} remaining)\n`;
                 } else {
-                    resultText += `› @${userId} (Permanen)\n`;
+                    resultText += `› @${userId} (Permanent)\n`;
                 }
 
                 resultText += `› @${userId}\n`;

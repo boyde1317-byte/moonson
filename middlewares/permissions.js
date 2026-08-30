@@ -64,10 +64,10 @@ module.exports = (bot) => {
             condition: !senderDb?.premium && !isOwner,
             msg: config.msg.premium,
             buttons: [{
-                text: "Harga Premium",
+                text: "Premium Price",
                 id: `${ctx.used.prefix}price`
             }, {
-                text: "Hubungi Owner",
+                text: "Contact Owner",
                 id: `${ctx.used.prefix}owner`
             }],
             reaction: "💎"

@@ -23,7 +23,7 @@ module.exports = {
                     showHidden: true
                 }))));
 
-            collector.on("end", async () => await ctx.reply(ctx.format.info("Collector berhenti!")));
+            collector.on("end", async () => await ctx.reply(ctx.format.info("Collector stopped!")));
         } catch (error) {
             await ctx.helper.handleError(ctx, error);
         }

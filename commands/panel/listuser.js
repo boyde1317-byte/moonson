@@ -22,7 +22,7 @@ module.exports = {
                 messageText += `${u.username}\n`;
                 messageText += `${u.first_name} ${u.last_name}\n\n`;
             }
-            messageText += `Halaman: ${res.meta.pagination.current_page}/${res.meta.pagination.total_pages}\n`;
+            messageText += `Page: ${res.meta.pagination.current_page}/${res.meta.pagination.total_pages}\n`;
             messageText += `Total user: ${res.meta.pagination.count}`;
 
             await ctx.reply(messageText);
