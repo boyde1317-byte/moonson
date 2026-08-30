@@ -10,7 +10,7 @@ module.exports = {
         if (!input)
             return await ctx.reply(
                 `${ctx.format.generateInstruction(["send"], ["text"])}\n` +
-                `${ctx.format.generateCmdExample(ctx.used, "apa itu evangelion?")}\n` +
+                `${ctx.format.generateCmdExample(ctx.used, "what is evangelion?")}\n` +
                 ctx.format.generateNotes([
                     `Type ${ctx.format.inlineCode(`${ctx.used.prefix + ctx.used.command} reset`)} to reset conversation history.`
                 ])
@@ -21,7 +21,7 @@ module.exports = {
         if (input.toLowerCase() === "reset") {
             (senderDb.sessionId ||= {}).claude = ctx.helper.randomUUID();
             senderDb.save();
-            return await ctx.reply(ctx.format.info("Riwayat percakapan berhasil direset!"));
+            return await ctx.reply(ctx.format.info("Chat history successfully reset!"));
         }
 
         try {

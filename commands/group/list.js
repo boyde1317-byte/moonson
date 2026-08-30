@@ -20,8 +20,8 @@ module.exports = [{
 
                 if (mutedUser.expiration) {
                     const timeDiff = mutedUser.expiration - Date.now();
-                    const daysLeft = ctx.format.convertMsToDuration(timeDiff, ["hari", "jam"]);
-                    resultText += `› @${userId} (${daysLeft} tersisa)\n`;
+                    const daysLeft = ctx.format.convertMsToDuration(timeDiff, ["days", "hours"]);
+                    resultText += `› @${userId} (${daysLeft} remaining)\n`;
                 } else {
                     resultText += `› @${userId} (Permanen)\n`;
                 }

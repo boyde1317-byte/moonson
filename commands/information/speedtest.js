@@ -6,9 +6,9 @@ module.exports = {
     category: "information",
     code: async (ctx) => {
         try {
-            const speedtestMsg = await ctx.reply(ctx.format.info("Memulai speedtest..."));
+            const speedtestMsg = await ctx.reply(ctx.format.info("Starting speedtest..."));
 
-            await ctx.editMessage(ctx.id, speedtestMsg.key, ctx.format.info("Mengambil informasi client..."));
+            await ctx.editMessage(ctx.id, speedtestMsg.key, ctx.format.info("Fetching client info..."));
             const service = new SpeedTestService();
             await service.fetchClientInfo();
 

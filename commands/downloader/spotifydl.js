@@ -20,7 +20,7 @@ module.exports = {
                 `${ctx.format.generateInstruction(["send"], ["text"])}\n` +
                 `${ctx.format.generateCmdExample(ctx.used, "https://open.spotify.com/track/5RhWszHMSKzb7KiXk4Ae0M")}\n` +
                 ctx.format.generatesFlagInfo({
-                    "-d": "Kirim sebagai dokumen"
+                    "-d": "Send as document"
                 })
             );
 

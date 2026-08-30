@@ -83,7 +83,7 @@ module.exports = [{
                 `${ctx.format.generateCmdExample(ctx.used, "https://www.youtube.com/watch?v=0Uhh62MUEic -d -r 720")}\n` +
                 ctx.format.generatesFlagInfo({
                     "-d": "Send as document",
-                    "-r": "Resolusi video (tersedia: 144, 240, 360, 480, 720, 1080, 1440, 2160 | default: 360)"
+                    "-r": "Video resolution (available: 144, 240, 360, 480, 720, 1080, 1440, 2160 | default: 360)"
                 })
             );
 
