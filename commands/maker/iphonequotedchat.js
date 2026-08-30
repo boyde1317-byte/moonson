@@ -16,7 +16,7 @@ module.exports = {
                 ctx.format.generateCmdExample(ctx.used, "😲, shinji!")
             );
 
-        if (input.length > 1000) return await ctx.reply(ctx.format.info("Maksimal 1000 karakter!"));
+        if (input.length > 1000) return await ctx.reply(ctx.format.info("Maximum 1000 characters!"));
 
         try {
             const result = ctx.api.createUrl("nexray", "/maker/v1/iqc", {
