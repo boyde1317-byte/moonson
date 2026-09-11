@@ -82,7 +82,8 @@ const bot = new Client({
                 mode: "public",
                 restart: {},
                 text: {},
-                blacklistBroadcast: []
+                blacklistBroadcast: [],
+                extraOwners: []
             }
         }
     },
@@ -94,6 +95,14 @@ Middlewares(bot);
 
 const cmd = new CommandHandler(bot, directory.command);
 cmd.load();
+
+// ── Restore shared owners added via .addowner ──────────────────────
+const { getDb } = require("./lib/helper");
+const botDoc = getDb(bot.db.getCollection("bot"));
+const extraOwners = Array.isArray(botDoc?.extraOwners) ? botDoc.extraOwners : [];
+for (const ownerId of extraOwners) {
+    if (String(ownerId) && !bot.owner.includes(String(ownerId))) bot.owner.push(String(ownerId));
+}
 
 // ── Expose primary client to session manager ──────────────────────
 global.moonsonClient = bot;
