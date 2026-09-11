@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "setup": "cp .env.example .env && npm install",
+    "setup": "cp config.example.json config.json && npm install",
     "start": "node index.js",
     "start:pm2": "pm2 start index.js --name $(basename $(pwd))"
   },

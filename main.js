@@ -95,4 +95,8 @@ Middlewares(bot);
 const cmd = new CommandHandler(bot, directory.command);
 cmd.load();
 
+// ── Expose primary client to session manager ──────────────────────
+global.moonsonClient = bot;
+global.db            = bot.db;
+
 bot.launch().catch(error => console.error(util.styleText("red", "[x]"), `Error: ${util.format(error)}`));

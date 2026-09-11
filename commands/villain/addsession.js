@@ -7,7 +7,7 @@ const fs   = require("node:fs");
 const path = require("node:path");
 
 const SESSIONS_DIR = path.join(process.cwd(), "sessions", "extra");
-const pendingPairs = new Map(); // label → { sock, timeout }
+const pendingPairs = new Map();
 
 async function spawnSession(label, onPairingCode, onSuccess, onFail) {
     const sessPath = path.join(SESSIONS_DIR, label);
@@ -16,18 +16,18 @@ async function spawnSession(label, onPairingCode, onSuccess, onFail) {
     const { state, saveCreds } = await useMultiFileAuthState(sessPath);
 
     const sock = makeWASocket({
-        auth           : state,
+        auth             : state,
         printQRInTerminal: false,
-        browser        : ["Moonson", "Safari", "3.0"],
-        syncFullHistory: false,
+        browser          : require("baileys").Browsers.macOS("Safari"),
+        syncFullHistory  : false,
+        logger           : require("pino")({ level: "silent" })
     });
 
     sock.ev.on("creds.update", saveCreds);
 
-    // Request pairing code
     try {
-        await new Promise(r => setTimeout(r, 2000)); // let socket stabilize
-        const code = await sock.requestPairingCode(label.replace(/_/g, ""));
+        await new Promise(r => setTimeout(r, 2000));
+        const code = await sock.requestPairingCode(label.replace(/\D/g, ""));
         const formatted = code.match(/.{1,4}/g)?.join("-") || code;
         onPairingCode(formatted);
     } catch (err) {
@@ -35,31 +35,9 @@ async function spawnSession(label, onPairingCode, onSuccess, onFail) {
         return;
     }
 
-    // ✅ new
-sock.ev.on("connection.update", async ({ connection, lastDisconnect }) => {
-    if (connection === "open") {
-        const { registerSession } = require("../../lib/sessionManager");
-        registerSession(label, sock); // wires message handler immediately
-        pendingPairs.delete(label);
-        clearTimeout(pendingPairs.get(label)?.timeout);
-        onSuccess(label);
-    }
-
-        if (connection === "close") {
-            const code = lastDisconnect?.error?.output?.statusCode;
-            if (code === DisconnectReason.loggedOut) {
-                // Clean up failed session
-                fs.rmSync(path.join(SESSIONS_DIR, label), { recursive: true, force: true });
-                pendingPairs.delete(label);
-                onFail(`Session ${label} logged out before pairing completed.`);
-            }
-        }
-    });
-
-    // Auto-cancel after 3 minutes if no connection
     const timeout = setTimeout(() => {
         if (pendingPairs.has(label)) {
-            sock.end();
+            try { sock.end(); } catch {}
             fs.rmSync(path.join(SESSIONS_DIR, label), { recursive: true, force: true });
             pendingPairs.delete(label);
             onFail(`Pairing timed out for ${label} — session removed.`);
@@ -67,6 +45,24 @@ sock.ev.on("connection.update", async ({ connection, lastDisconnect }) => {
     }, 3 * 60 * 1000);
 
     pendingPairs.set(label, { sock, timeout });
+
+    sock.ev.on("connection.update", async ({ connection, lastDisconnect }) => {
+        if (connection === "open") {
+            const { registerSession } = require("../../lib/sessionManager");
+            clearTimeout(pendingPairs.get(label)?.timeout);
+            registerSession(label, sock);
+            pendingPairs.delete(label);
+            onSuccess(label);
+        }
+        if (connection === "close") {
+            const code = lastDisconnect?.error?.output?.statusCode;
+            if (code === DisconnectReason.loggedOut) {
+                fs.rmSync(path.join(SESSIONS_DIR, label), { recursive: true, force: true });
+                pendingPairs.delete(label);
+                onFail(`Session ${label} logged out before pairing completed.`);
+            }
+        }
+    });
 }
 
 module.exports = {
@@ -77,12 +73,10 @@ module.exports = {
 
     code: async (ctx) => {
         const { command, args, sender, ownerNumber } = ctx;
-
-        // Owner gate
         const ownerJid = `${ownerNumber}@s.whatsapp.net`;
         if (sender !== ownerJid) return;
 
-        // ── .listsessions ─────────────────────────────────────────
+        // ── .listsessions ──────────────────────────────────────────
         if (command === "listsessions") {
             const active  = global.getSessionCount?.() ?? 0;
             const pending = pendingPairs.size;
@@ -99,8 +93,7 @@ module.exports = {
             }
 
             const list = folders.map((f, i) => {
-                const isPending = pendingPairs.has(f);
-                const status    = isPending ? "⏳ pending" : "✅ active";
+                const status = pendingPairs.has(f) ? "⏳ pending" : "✅ active";
                 return `${i + 1}. ${f} — ${status}`;
             }).join("\n");
 
@@ -112,17 +105,16 @@ module.exports = {
             );
         }
 
-        // ── .removesession <label> ────────────────────────────────
+        // ── .removesession <label> ─────────────────────────────────
         if (command === "removesession") {
             const label = args[0];
             if (!label) return ctx.reply("Usage: .removesession <label>");
 
             const sessPath = path.join(SESSIONS_DIR, label);
             if (!fs.existsSync(sessPath)) {
-                return ctx.reply(`❌ No session found with label: ${label}`);
+                return ctx.reply(`❌ No session found: ${label}`);
             }
 
-            // Cancel pending if exists
             if (pendingPairs.has(label)) {
                 const { sock, timeout } = pendingPairs.get(label);
                 clearTimeout(timeout);
@@ -131,10 +123,10 @@ module.exports = {
             }
 
             fs.rmSync(sessPath, { recursive: true, force: true });
-            return ctx.reply(`🗑️ Session *${label}* removed.\nRestart bot to fully deregister from pool.`);
+            return ctx.reply(`🗑️ Session *${label}* removed.\nRestart to fully deregister from pool.`);
         }
 
-        // ── .addsession / .newsession / .linksession <number> ────
+        // ── .addsession <number> ───────────────────────────────────
         const num = args[0]?.replace(/\D/g, "");
         if (!num || num.length < 7 || num.length > 15) {
             return ctx.reply(
@@ -142,50 +134,47 @@ module.exports = {
                 + `.addsession <number>\n`
                 + `.listsessions\n`
                 + `.removesession <label>\n\n`
-                + `Example: .addsession 62812345678\n\n`
-                + `The number becomes the session label.\n`
-                + `You'll get a pairing code — enter it on the linked WA device.`
+                + `Example: .addsession 62812345678`
             );
         }
 
-        // Check duplicate
         const sessPath = path.join(SESSIONS_DIR, num);
         if (fs.existsSync(sessPath)) {
             return ctx.reply(
                 `⚠️ Session for ${num} already exists.\n`
-                + `Use .removesession ${num} first if you want to re-pair.`
+                + `Use .removesession ${num} to re-pair.`
             );
         }
 
         if (pendingPairs.has(num)) {
-            return ctx.reply(`⏳ Already waiting on pairing for ${num}. Check your WA linked devices.`);
+            return ctx.reply(`⏳ Already pairing ${num}.`);
         }
 
         await ctx.reply(
             `🔗 *Pairing New Session*\n\n`
             + `Number: ${num}\n`
-            + `Generating pairing code...\n\n`
-            + `This may take a few seconds.`
+            + `Generating pairing code...`
         );
 
         await spawnSession(
             num,
-            // onPairingCode
             async (code) => {
                 await ctx.reply(
                     `📲 *Pairing Code for ${num}*\n\n`
                     + `\`\`\`${code}\`\`\`\n\n`
-                    + `Open WhatsApp → Linked Devices → Link a Device → Enter code above.\n`
-                    + `⏳ Code expires in 3 minutes.`
+                    + `WhatsApp → Linked Devices → Link with phone number\n`
+                    + `⏳ Expires in 3 minutes.`
                 );
             },
-            // onSuccess
             async (label) => {
                 await ctx.reply(
                     `✅ *Session ${label} Connected*\n\n`
-                    + `This number is now active in the reporter pool.\n`
-                    + `No restart needed — it's live immediately.`
+                    + `Live in reporter pool immediately.`
                 );
             },
-            // onFail
             async (reason) => {
+                await ctx.reply(`❌ *Session Failed*\n\n${reason}`);
+            }
+        );
+    }
+};

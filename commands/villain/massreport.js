@@ -2,9 +2,9 @@ const fs   = require("node:fs");
 const path = require("node:path");
 
 const STATE_FILE = path.join(process.cwd(), "data", "massreport_state.json");
-const activeJobs = new Map(); // jid → { cancel: bool }
+const activeJobs = new Map(); // targetJid → { cancel: bool }
 
-// ─── State helpers ──────────────────────────────────────────────
+// ─── State helpers ────────────────────────────────────────────────
 function loadState() {
     try {
         if (!fs.existsSync(STATE_FILE)) return {};
@@ -18,7 +18,7 @@ function saveState(state) {
     fs.writeFileSync(STATE_FILE, JSON.stringify(state, null, 2));
 }
 
-// ─── Randomized noise payloads ──────────────────────────────────
+// ─── Helpers ──────────────────────────────────────────────────────
 const NOISE = [
     ".", "..", "ok", "hi", "hey", "yo", "sup", "k",
     "hm", "lol", "wut", "bruh", "wtf", "ugh", "smh",
@@ -34,12 +34,12 @@ function delay(min, max) {
     return new Promise(r => setTimeout(r, ms));
 }
 
-// ─── Pressure applied by one session ────────────────────────────
+// ─── Pressure per session ─────────────────────────────────────────
 async function applyPressure(sock, targetJid, label, job) {
     const results = [];
 
     try {
-        // Vector 1 — message burst (randomized content + timing)
+        // Vector 1 — randomized message burst
         for (let i = 0; i < 10; i++) {
             if (job.cancel) break;
             await sock.sendMessage(targetJid, { text: noise() });
@@ -61,7 +61,7 @@ async function applyPressure(sock, targetJid, label, job) {
 
         if (job.cancel) return results;
 
-        // Vector 3 — final block (leaves target in reported state)
+        // Vector 3 — final block
         await sock.updateBlockStatus(targetJid, "block");
         results.push(`✅ [${label}] Final block applied`);
 
@@ -72,15 +72,21 @@ async function applyPressure(sock, targetJid, label, job) {
     return results;
 }
 
-// ─── Full coordinated attack ─────────────────────────────────────
-async function fireAllSessions(primarySock, targetJid, job) {
-    const extraClients = global.getActiveSessions?.() ?? [];
+// ─── Coordinated multi-session fire ──────────────────────────────
+async function fireAllSessions(targetJid, job) {
+    // Primary bot's core Baileys socket
+    const primarySock = global.moonsonClient?.core;
+    if (!primarySock) throw new Error("Primary client not ready");
+
+    // Extra paired sessions
+    const extraSocks = global.getActiveSessions?.() ?? [];
+
     const sessions = [
         { sock: primarySock, label: "PRIMARY" },
-        ...extraClients.map((s, i) => ({ sock: s, label: `SESSION_${i + 1}` }))
+        ...extraSocks.map((s, i) => ({ sock: s, label: `SESSION_${i + 1}` }))
     ];
 
-    // Fire all sessions simultaneously
+    // Fire all simultaneously
     const results = await Promise.all(
         sessions.map(({ sock, label }) => applyPressure(sock, targetJid, label, job))
     );
@@ -88,7 +94,7 @@ async function fireAllSessions(primarySock, targetJid, job) {
     return sessions.map(({ label }, i) => ({ label, results: results[i] }));
 }
 
-// ─── Command ─────────────────────────────────────────────────────
+// ─── Command ──────────────────────────────────────────────────────
 module.exports = {
     name: "massreport",
     category: "villain",
@@ -96,11 +102,14 @@ module.exports = {
     permissions: { owner: true },
 
     code: async (ctx) => {
-        const { command, args, sender, ownerNumber, client } = ctx;
+        const { command, args } = ctx;
 
-        // Owner gate
-        const ownerJid = `${ownerNumber}@s.whatsapp.net`;
-        if (sender !== ownerJid) return;
+        // ── Owner gate via Moonson's built-in checker ──
+        const primary = global.moonsonClient;
+        if (!primary) return ctx.reply("❌ Primary client not ready.");
+
+        const isOwner = primary.checkOwner(ctx.sender?.jid, ctx.m?.key?.fromMe);
+        if (!isOwner) return;
 
         // ── .stopreport <number> ──────────────────────────────────
         if (command === "stopreport") {
@@ -114,7 +123,7 @@ module.exports = {
 
             activeJobs.get(targetJid).cancel = true;
             activeJobs.delete(targetJid);
-            return ctx.reply(`🛑 Report job cancelled for ${num}`);
+            return ctx.reply(`🛑 Job cancelled for ${num}`);
         }
 
         // ── .massreport / .mreport / .banfire <number> [rounds] ──
@@ -124,22 +133,25 @@ module.exports = {
                 `*Mass Reporter — Usage*\n\n`
                 + `.massreport <number> [rounds]\n`
                 + `.stopreport <number>\n\n`
-                + `rounds = how many pressure waves (default: 1)\n`
+                + `rounds = pressure waves, max 10 (default: 1)\n\n`
                 + `Example: .massreport 62812345678 3`
             );
         }
 
-        const rounds  = Math.min(parseInt(args[1]) || 1, 10); // cap at 10
+        const rounds    = Math.min(parseInt(args[1]) || 1, 10);
         const targetJid = `${num}@s.whatsapp.net`;
 
         if (activeJobs.has(targetJid)) {
-            return ctx.reply(`⚠️ Already running a job on ${num}. Use .stopreport ${num} to cancel.`);
+            return ctx.reply(
+                `⚠️ Job already running on ${num}.\n`
+                + `Use .stopreport ${num} to cancel.`
+            );
         }
 
-        const job = { cancel: false };
-        activeJobs.set(targetJid, job);
-
+        const job          = { cancel: false };
         const sessionCount = 1 + (global.getSessionCount?.() ?? 0);
+
+        activeJobs.set(targetJid, job);
 
         await ctx.reply(
             `🔥 *MASS REPORT INITIATED*\n\n`
@@ -151,19 +163,25 @@ module.exports = {
 
         const state = loadState();
         state[num] = {
-            startedAt : new Date().toISOString(),
+            startedAt: new Date().toISOString(),
             rounds,
-            sessions  : sessionCount,
-            log       : []
+            sessions: sessionCount,
+            log: []
         };
 
-        // ── Run rounds ──
+        // ── Round loop ────────────────────────────────────────────
         for (let r = 1; r <= rounds; r++) {
             if (job.cancel) break;
 
             await ctx.reply(`⚡ Round ${r}/${rounds} firing...`);
 
-            const roundResults = await fireAllSessions(client, targetJid, job);
+            let roundResults;
+            try {
+                roundResults = await fireAllSessions(targetJid, job);
+            } catch (err) {
+                await ctx.reply(`❌ Round ${r} failed: ${err.message}`);
+                break;
+            }
 
             const summary = roundResults
                 .map(({ label, results }) => `*${label}*\n` + results.join("\n"))
@@ -172,11 +190,8 @@ module.exports = {
             state[num].log.push({ round: r, results: roundResults });
             saveState(state);
 
-            await ctx.reply(
-                `📊 *Round ${r} Complete*\n\n${summary}`
-            );
+            await ctx.reply(`📊 *Round ${r} Complete*\n\n${summary}`);
 
-            // Gap between rounds
             if (r < rounds && !job.cancel) await delay(3000, 6000);
         }
 
@@ -184,9 +199,9 @@ module.exports = {
 
         if (!job.cancel) {
             await ctx.reply(
-                `✅ *Job Complete — ${num}*\n`
+                `✅ *Job Complete — ${num}*\n\n`
                 + `${rounds} round(s) × ${sessionCount} session(s) fired.\n`
-                + `⏳ WA review typically triggers within 24–48h under sustained pressure.`
+                + `⏳ WA review triggers within 24–48h under sustained pressure.`
             );
         }
     }

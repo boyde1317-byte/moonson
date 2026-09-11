@@ -131,7 +131,7 @@ async function startBot() {
         global.nest = config.pterodactyl.defaultNest || 5;
         log.success("[Pterodactyl] Configuration loaded");
     } else {
-        log.warn("[Pterodactyl] Not configured — set PTERO_* environment variables if you sell servers");
+        log.warn("[Pterodactyl] No pterodactyl configuration found in config.json");
         // Set fallback values to prevent crashes
         global.domain = null;
         global.plta = null;

@@ -1,0 +1,69 @@
+{
+  "bot": {
+    "name": "Moonson",
+    "thumbnail": "https://media.base44.com/images/public/6a6faa067c8ee05c592007b5/a174ce51a_generated_image.png",
+    "telegram": "https://t.me/DeathCore_Xr"
+  },
+  "msg": {
+    "admin": "This command can only be used by group admins!",
+    "banned": "You have been banned!",
+    "botAdmin": "The bot must be a group admin!",
+    "botGroupMembership": "You have not joined the bot's group!",
+    "coin": "You don't have enough coins!",
+    "cooldown": "This command is on cooldown, please wait...",
+    "gamerestrict": "The group admin has restricted game commands!",
+    "group": "This command can only be used in groups!",
+    "groupSewa": "The group admin has not purchased a rental!",
+    "owner": "This command can only be used by the owner!",
+    "premium": "You must be a premium user!",
+    "private": "This command can only be used in private chats!",
+    "privatePremiumOnly": "You must be a premium user to use this in private chats.",
+    "restrict": "This command is restricted to prevent WhatsApp bans!",
+    "unavailableAtNight": "The bot is unavailable from 12:00 AM to 6:00 AM! Please come back later.",
+    "footer": "© Moonson by Moonson Aizen with ♥︎",
+    "wait": "Please wait...",
+    "notFound": "Nothing found! Try again later.",
+    "error": "An error occurred while processing your request! Please try again later or contact the owner if the problem persists.",
+    "invalidUrl": "Invalid URL!"
+  },
+  "owner": {
+    "name": "Moonson Aizen",
+    "organization": "Moonson",
+    "report": true,
+    "co": []
+  },
+  "sticker": {
+    "packname": "Moonson",
+    "author": "Moonson Aizen"
+  },
+  "system": {
+    "alwaysOnline": true,
+    "antiCall": true,
+    "autoRead": true,
+    "autoTypingOnCmd": true,
+    "cooldown": 10000,
+    "maxListeners": 50,
+    "port": 3000,
+    "privatePremiumOnly": true,
+    "restrict": false,
+    "requireBotGroupMembership": false,
+    "requireGroupSewa": false,
+    "selfReply": true,
+    "timeZone": "Africa/Accra",
+    "unavailableAtNight": false,
+    "useCoin": true,
+    "usePairingCode": true,
+    "customPairingCode": "MOONSON1",
+    "useStore": false,
+    "useServer": false,
+    "prefix": "."
+  },
+  "pterodactyl": {
+    "defaultEgg": 1,
+    "defaultLocation": 1,
+    "defaultNest": 5
+  },
+  "note": {
+    "message": "⚠️ This is only for server seller people. Do not use this if you are not a server seller."
+  }
+}

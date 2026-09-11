@@ -110,7 +110,22 @@ CUSTOM_PAIRING_CODE="MOONSON1"
 See `.env.example` for the full list with defaults — bot identity, message templates, system behavior, sticker config, and optional Pterodactyl settings.
 
 ### For Railway/Heroku
-Set the same variables in the platform's environment variables dashboard. The `.env` file is only for local development.
+
+Set the same variables in the platform's environment variables dashboard. The `.env` file is only for local development."
+  },
+  "sticker": {
+    "packname": "Moonson",
+    "author": "Moonson Aizen"
+  }
+}
+```
+
+| Field | Purpose |
+|:------|:--------|
+| `bot.phoneNumber` | Your WhatsApp number (international format, no `+`) |
+| `system.prefix` | Command trigger character (default: `.`) |
+| `system.customPairingCode` | 8-character code for linking devices |
+| `system.timeZone` | Moment.js timezone for the bot |
 
 ---
 
