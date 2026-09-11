@@ -10,14 +10,14 @@ module.exports = {
         const prefix = ctx.used.prefix;
 
         try {
-            // Use nekos.fun API for neko images
-            const apiUrl = "https://nekos.fun/api/neko";
+            // nekos.fun shut down — use nekos.best
+            const apiUrl = "https://nekos.best/api/v2/neko";
             const { data: res } = await ctx.request.get(apiUrl);
 
-            if (!res?.image && !res?.url)
-                return await ctx.reply(ctx.format.info("Could not fetch neko image. Try again later."));
+            const imageUrl = res?.results?.[0]?.url || res?.image || res?.url;
 
-            const imageUrl = res.image || res.url;
+            if (!imageUrl)
+                return await ctx.reply(ctx.format.info("Could not fetch neko image. Try again later."));
 
             await ctx.reply({
                 image: { url: imageUrl },

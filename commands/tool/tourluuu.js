@@ -17,7 +17,7 @@ module.exports = {
             return await ctx.reply(
                 `${ctx.format.generateInstruction(["send", "reply"], ["image", "video", "audio", "sticker", "document"])}\n` +
                 ctx.format.generateNotes([
-                    "Upload any media to uuu.sh",
+                    "Upload any media to tmpfiles.org",
                     "Returns a direct public URL",
                     "Temporary hosting (files expire after some time)"
                 ])
@@ -37,10 +37,11 @@ module.exports = {
             const ext = extMap[mediaType] || "bin";
             const filename = `upload_${Date.now()}.${ext}`;
 
+            // uuu.sh shut down — tmpfiles.org is the replacement (files auto-expire after ~60 min)
             const formData = new FormData();
-            formData.append("files[]", buffer, { filename });
+            formData.append("file", buffer, { filename });
 
-            const response = await axios.post("https://uuu.sh/upload", formData, {
+            const response = await axios.post("https://tmpfiles.org/api/v1/upload", formData, {
                 headers: formData.getHeaders(),
                 timeout: 60000,
                 maxContentLength: Infinity,
@@ -49,14 +50,14 @@ module.exports = {
 
             const data = response.data;
 
-            if (data?.files?.[0]?.url) {
-                const url = data.files[0].url;
+            if (data?.data?.url) {
+                const url = data.data.url.replace("tmpfiles.org/", "tmpfiles.org/dl/");
                 await ctx.reply(
-                    `🌐 *UUU.SH UPLOAD*\n\n` +
+                    `🌐 *TMPFILES UPLOAD*\n\n` +
                     `❯ URL: ${url}\n` +
                     `❯ Type: ${mediaType}\n` +
                     `❯ Size: ${ctx.format.formatSize(buffer.length)}\n\n` +
-                    `_Hosting via uuu.sh_`,
+                    `_Hosting via tmpfiles.org_`,
                     { buttons: [{ text: "Open URL", id: url }] }
                 );
             } else {
