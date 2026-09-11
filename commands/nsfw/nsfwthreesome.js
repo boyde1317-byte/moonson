@@ -11,7 +11,8 @@ module.exports = {
         const prefix = ctx.used.prefix;
 
         try {
-            const apiUrl = "https://purrbot.site/api/img/nsfw/threesome_gif";
+            const apiUrl = "https://api.purrbot.site/v2/img/nsfw/" +
+                ["threesome_fff", "threesome_ffm", "threesome_mmf"][Math.floor(Math.random() * 3)] + "/gif";
             const { data: res } = await ctx.request.get(apiUrl);
 
             if (!res?.link && !res?.error)

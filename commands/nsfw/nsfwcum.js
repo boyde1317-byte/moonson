@@ -11,7 +11,7 @@ module.exports = {
         const prefix = ctx.used.prefix;
 
         try {
-            const apiUrl = "https://purrbot.site/api/img/nsfw/cum";
+            const apiUrl = "https://api.purrbot.site/v2/img/nsfw/cum/gif";
             const { data: res } = await ctx.request.get(apiUrl);
 
             if (!res?.link && !res?.error)

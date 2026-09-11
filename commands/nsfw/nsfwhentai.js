@@ -11,14 +11,25 @@ module.exports = {
         const prefix = ctx.used.prefix;
 
         try {
-            // Try purrbot anal endpoint as hentai
-            const apiUrl = "https://purrbot.site/api/img/nsfw/hentai";
-            const { data: res } = await ctx.request.get(apiUrl);
+            let imageUrl = null;
 
-            if (!res?.link && !res?.url)
+            // Primary: waifu.im "hentai" (purrbot has no hentai category)
+            try {
+                const { data: res } = await ctx.request.get("https://api.waifu.im/search?included_tags=hentai&is_sfw=false&limit=1");
+                const image = res?.images?.[0];
+                if (image?.url) imageUrl = image.url;
+            } catch {}
+
+            // Fallback: purrbot v2 fuck
+            if (!imageUrl) {
+                try {
+                    const { data: res } = await ctx.request.get("https://api.purrbot.site/v2/img/nsfw/fuck/gif");
+                    if (res?.link) imageUrl = res.link;
+                } catch {}
+            }
+
+            if (!imageUrl)
                 return await ctx.reply(ctx.format.info("Could not fetch image. Try again later."));
-
-            const imageUrl = res.link || res.url;
 
             await ctx.reply({
                 image: { url: imageUrl },
