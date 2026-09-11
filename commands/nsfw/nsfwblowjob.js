@@ -11,14 +11,14 @@ module.exports = {
         const prefix = ctx.used.prefix;
 
         try {
-            const apiUrl = "https://api.waifu.pics/nsfw/blowjob";
+            const apiUrl = "https://api.purrbot.site/v2/img/nsfw/blowjob/gif";
             const { data: res } = await ctx.request.get(apiUrl);
 
-            if (!res?.url)
+            if (!res?.link)
                 return await ctx.reply(ctx.format.info("Could not fetch image. Try again later."));
 
             await ctx.reply({
-                image: { url: res.url },
+                image: { url: res.link },
                 caption: "🔞 *NSFW Blowjob*\n\nTap below for another!",
                 buttons: [{
                     text: "🔄 Get Another",

@@ -10,31 +10,17 @@ module.exports = {
     code: async (ctx) => {
         const prefix = ctx.used.prefix;
 
-        // Pool of all NSFW endpoints across APIs
-        const waifuPicsCategories = ["waifu", "neko", "blowjob", "trap"];
-        const purrbotCategories = ["anal", "blowjob", "cum", "fuck", "lesbian", "spank", "threesome_gif", "pussy", "boobs", "hentai"];
+        // waifu.pics shut down (2026) — purrbot v2 is the live source
+        const purrbotCategories = ["anal", "blowjob", "cum", "fuck", "neko", "yuri", "solo", "solo_male", "pussylick", "threesome_fff", "threesome_ffm", "threesome_mmf", "yaoi"];
 
         try {
-            // Randomly pick an API and category
-            const useWaifuPics = Math.random() < 0.4;
-
             let imageUrl = null;
             let label = "Random NSFW";
 
-            if (useWaifuPics) {
-                const cat = waifuPicsCategories[Math.floor(Math.random() * waifuPicsCategories.length)];
-                const apiUrl = "https://api.waifu.pics/nsfw/" + cat;
-                const { data: res } = await ctx.request.get(apiUrl);
-                if (res?.url) {
-                    imageUrl = res.url;
-                    label = "NSFW " + cat.charAt(0).toUpperCase() + cat.slice(1);
-                }
-            }
-
-            // Fallback to purrbot
-            if (!imageUrl) {
+            // purrbot v2
+            {
                 const cat = purrbotCategories[Math.floor(Math.random() * purrbotCategories.length)];
-                const apiUrl = "https://purrbot.site/api/img/nsfw/" + cat;
+                const apiUrl = "https://api.purrbot.site/v2/img/nsfw/" + cat + "/gif";
                 const { data: res } = await ctx.request.get(apiUrl);
                 if (res?.link) {
                     imageUrl = res.link;

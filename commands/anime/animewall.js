@@ -10,8 +10,8 @@ module.exports = {
         const prefix = ctx.used.prefix;
 
         try {
-            // Use waifu.pics sfw/waifu for wallpaper-style images
-            const apiUrl = "https://api.waifu.pics/sfw/waifu";
+            // waifu.pics shut down — use nekos.life wallpaper endpoint
+            const apiUrl = "https://nekos.life/api/v2/img/wallpaper";
             const { data: res } = await ctx.request.get(apiUrl);
 
             if (!res?.url)
