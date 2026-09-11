@@ -1,3 +1,4 @@
+require("./lib/globals"); // must be first: installs the bare-global identifiers (config, axios, tools.*) main.js and commands rely on
 const { Client, CommandHandler } = require("./lib");
 const path = require("node:path");
 const util = require("node:util");
