@@ -40,8 +40,8 @@ module.exports = {
             }
 
             const prompt = `Write an engaging short story based on this prompt. Include vivid descriptions, dialogue, and a satisfying conclusion:\n\n${input}`;
-            const apiUrl = tools.api.createUrl("alwayscodex", "/api/ai/chatgpt-org", {
-                teks: prompt,
+            const apiUrl = tools.api.createUrl("nexray", "/ai/chatgpt", {
+                text: prompt,
                 model: "openai/gpt-4o-mini",
                 session: senderDb.sessionId.aistory
             });

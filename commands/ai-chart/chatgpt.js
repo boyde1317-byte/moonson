@@ -36,8 +36,8 @@ module.exports = {
             }
 
             // ── Build API URL ──
-            const apiUrl = tools.api.createUrl("alwayscodex", "/api/ai/chatgpt-org", {
-                teks: input,
+            const apiUrl = tools.api.createUrl("nexray", "/ai/chatgpt", {
+                text: input,
                 model: "openai/gpt-4o-mini",
                 session: senderDb.sessionId.chatgpt
             });

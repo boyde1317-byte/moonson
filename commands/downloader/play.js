@@ -27,8 +27,8 @@ module.exports = {
             let videos = [];
 
             try {
-                const apiUrl = ctx.api.createUrl("alwayscodex", "/api/search/youtube-search", {
-                    query: input
+                const apiUrl = ctx.api.createUrl("nexray", "/search/youtube", {
+                    q: input
                 });
                 const response = await ctx.request.get(apiUrl);
                 videos = response?.data?.result?.videos || [];

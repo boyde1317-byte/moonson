@@ -29,8 +29,8 @@ module.exports = {
                 (senderDb.sessionId ||= {}).claude = ctx.helper.randomUUID();
                 senderDb.save();
             }
-            const apiUrl = ctx.api.createUrl("alwayscodex", "/api/ai/chatgpt-org", {
-                teks: input,
+            const apiUrl = ctx.api.createUrl("nexray", "/ai/chatgpt", {
+                text: input,
                 model: "anthropic/claude-haiku-4-5",
                 session: senderDb.sessionId.claude
             });

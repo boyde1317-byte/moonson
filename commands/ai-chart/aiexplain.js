@@ -40,8 +40,8 @@ module.exports = {
             }
 
             const prompt = `Explain the following in simple, easy-to-understand terms. Use everyday analogies and avoid jargon. Topic: ${input}`;
-            const apiUrl = tools.api.createUrl("alwayscodex", "/api/ai/chatgpt-org", {
-                teks: prompt,
+            const apiUrl = tools.api.createUrl("nexray", "/ai/chatgpt", {
+                text: prompt,
                 model: "openai/gpt-4o-mini",
                 session: senderDb.sessionId.aiexplain
             });

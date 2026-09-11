@@ -52,7 +52,7 @@ module.exports = {
             // Fallback API: alwayscodex
             if (images.length === 0) {
                 try {
-                    const fallbackUrl = ctx.api.createUrl("alwayscodex", "/api/search/pinterest", {
+                    const fallbackUrl = ctx.api.createUrl("nexray", "/search/pinterest", {
                         q: input
                     });
                     const fallbackRes = await ctx.request.get(fallbackUrl);

@@ -34,8 +34,8 @@ module.exports = {
             }
 
             const prompt = `Translate the following text into ${targetLang}. Maintain the original tone and meaning. Only return the translation:\n\n${text}`;
-            const apiUrl = tools.api.createUrl("alwayscodex", "/api/ai/deepseek", {
-                teks: prompt,
+            const apiUrl = tools.api.createUrl("nexray", "/ai/chatgpt", {
+                text: prompt,
                 session: ctx.helper.randomUUID()
             });
 

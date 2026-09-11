@@ -36,8 +36,8 @@ module.exports = {
             }
 
             // ── Build API URL ──
-            const apiUrl = tools.api.createUrl("alwayscodex", "/api/ai/gemini-pro", {
-                teks: input,
+            const apiUrl = tools.api.createUrl("nexray", "/ai/chatgpt", {
+                text: input,
                 session: senderDb.sessionId.gemini
             });
 

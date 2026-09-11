@@ -14,8 +14,8 @@ module.exports = {
             );
 
         try {
-            const apiUrl = ctx.api.createUrl("alwayscodex", "/api/ai/felo", {
-                teks: input
+            const apiUrl = ctx.api.createUrl("nexray", "/ai/chatgpt", {
+                text: input
             });
             const result = (await ctx.request.get(apiUrl)).data.result;
 

@@ -15,9 +15,7 @@ module.exports = {
             );
 
         try {
-            const result = ctx.api.createUrl("alwayscodex", "/api/imageai/text2imgv2", {
-                teks: input
-            });
+            const result = `https://image.pollinations.ai/prompt/${encodeURIComponent(input)}?width=512&height=512&nologo=true`;
 
             await ctx.reply({
                 image: {

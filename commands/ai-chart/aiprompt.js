@@ -25,8 +25,8 @@ module.exports = {
 
         try {
             const prompt = `Enhance this AI image generation prompt into a detailed, vivid description. Add artistic style, lighting, mood, composition, and quality modifiers. Return only the enhanced prompt:\n\n${input}`;
-            const apiUrl = tools.api.createUrl("alwayscodex", "/api/ai/chatgpt-org", {
-                teks: prompt,
+            const apiUrl = tools.api.createUrl("nexray", "/ai/chatgpt", {
+                text: prompt,
                 model: "openai/gpt-4o-mini",
                 session: ctx.helper.randomUUID()
             });

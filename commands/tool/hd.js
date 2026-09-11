@@ -11,8 +11,9 @@ module.exports = {
 
         try {
             const uploadUrl = await ctx.msg.upload() || await ctx.quoted.upload();
-            const result = ctx.api.createUrl("alwayscodex", "/api/imagehd/ai-enhance", {
-                url: uploadUrl
+            const result = ctx.api.createUrl("nexray", "/tools/upscale", {
+                url: uploadUrl,
+                resolusi: 2
             });
 
             await ctx.reply({

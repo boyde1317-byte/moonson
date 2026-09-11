@@ -28,8 +28,8 @@ module.exports = {
 
         try {
             const prompt = `Proofread and correct the following text. Show the corrected version, then list the changes made:\n\n"${input}"`;
-            const apiUrl = tools.api.createUrl("alwayscodex", "/api/ai/deepseek", {
-                teks: prompt,
+            const apiUrl = tools.api.createUrl("nexray", "/ai/chatgpt", {
+                text: prompt,
                 session: ctx.helper.randomUUID()
             });
 

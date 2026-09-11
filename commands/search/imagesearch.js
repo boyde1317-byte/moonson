@@ -24,7 +24,7 @@ module.exports = {
                 res = (await axios.get(apiUrl, { timeout: 15000 })).data;
             } catch (e) {
                 // Fallback to pinterest tool
-                const fallbackUrl = ctx.api.createUrl("alwayscodex", "/api/search/pinterest", { q: input });
+                const fallbackUrl = ctx.api.createUrl("nexray", "/search/pinterest", { q: input });
                 res = (await axios.get(fallbackUrl, { timeout: 15000 })).data;
             }
 
@@ -38,7 +38,7 @@ module.exports = {
             }
 
             // Send the first image
-            const firstImage = typeof images[0] === "string" ? images[0] : images[0]?.url || images[0]?.image || images[0]?.thumbnail;
+            const firstImage = typeof images[0] === "string" ? images[0] : images[0]?.url || images[0]?.image || images[0]?.images_url || images[0]?.thumbnail;
 
             if (!firstImage) {
                 return await ctx.reply(ctx.format.info(`No images found for "${input}".`));

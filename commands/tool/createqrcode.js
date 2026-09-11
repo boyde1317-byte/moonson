@@ -15,9 +15,7 @@ module.exports = {
             );
 
         try {
-            const result = ctx.api.createUrl("alwayscodex", "/api/tools/text2qr", {
-                text: input
-            });
+            const result = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(input)}`;
 
             await ctx.reply({
                 image: {

@@ -28,7 +28,7 @@ module.exports = {
                 return await ctx.reply(ctx.format.info("Could not upload the image. Please try again."));
 
             // Use the removebackground tool endpoint (existing config uses this)
-            const imageUrl = ctx.api.createUrl("alwayscodex", "/api/tools/removebg", { url: uploadUrl });
+            const imageUrl = ctx.api.createUrl("nexray", "/tools/removebg", { url: uploadUrl });
 
             await ctx.reply({
                 image: { url: imageUrl },

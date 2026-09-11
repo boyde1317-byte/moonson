@@ -15,10 +15,10 @@ module.exports = {
             );
 
         try {
-            const apiUrl = ctx.api.createUrl("alwayscodex", "/api/search/tiktok-search", {
-                query: input
+            const apiUrl = ctx.api.createUrl("nexray", "/search/tiktok", {
+                q: input
             });
-            const result = (await ctx.request.get(apiUrl)).data.result.videos[0].play;
+            const result = (await ctx.request.get(apiUrl)).data.result[0].data;
 
             await ctx.reply({
                 video: {

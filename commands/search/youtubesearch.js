@@ -27,10 +27,10 @@ module.exports = {
             });
 
         try {
-            const apiUrl = ctx.api.createUrl("alwayscodex", "/api/search/youtube-search", {
-                query: input
+            const apiUrl = ctx.api.createUrl("nexray", "/search/youtube", {
+                q: input
             });
-            const result = (await ctx.request.get(apiUrl)).data.result.videos;
+            const result = (await ctx.request.get(apiUrl)).data.result;
 
             const resultText = result.map(res =>
                 `»› ${ctx.format.bold("Title")}: ${res.title}\n` +

@@ -27,7 +27,7 @@ module.exports = [{
         if (!ctx.helper.isUrl(url)) return await ctx.reply(ctx.format.info(config.msg.invalidUrl));
 
         try {
-            const apiUrl = ctx.api.createUrl("alwayscodex", "/api/downloader/savetube", {
+            const apiUrl = ctx.api.createUrl("nexray", "/downloader/savetube", {
                 url,
                 quality: "mp3"
             });
@@ -37,7 +37,7 @@ module.exports = [{
             if (document) {
                 await ctx.reply({
                     document: {
-                        url: result.download
+                        url: result.url
                     },
                     fileName: `${result.title}.mp3`,
                     mimetype: "audio/mpeg",
@@ -46,7 +46,7 @@ module.exports = [{
             } else {
                 await ctx.reply({
                     audio: {
-                        url: result.download
+                        url: result.url
                     },
                     mimetype: "audio/mpeg"
                 });
@@ -90,9 +90,9 @@ module.exports = [{
         if (!ctx.helper.isUrl(url)) return await ctx.reply(ctx.format.info(config.msg.invalidUrl));
 
         try {
-            const apiUrl = ctx.api.createUrl("alwayscodex", "/api/downloader/youtube2", {
+            const apiUrl = ctx.api.createUrl("nexray", "/downloader/savetube", {
                 url,
-                quality: ["360", "480", "720", "1080", "1440", "2160"].includes(flag.resolution) ? `${flag.resolution}p` : "720p"
+                quality: ["360", "480", "720", "1080", "1440", "2160"].includes(flag.resolution) ? flag.resolution : "720"
             });
             const result = (await ctx.request.get(apiUrl)).data.result;
 
@@ -100,7 +100,7 @@ module.exports = [{
             if (document) {
                 await ctx.reply({
                     document: {
-                        url: result.downloadUrl
+                        url: result.url
                     },
                     fileName: `${result.title}.mp4`,
                     mimetype: "video/mp4",
@@ -109,7 +109,7 @@ module.exports = [{
             } else {
                 await ctx.reply({
                     video: {
-                        url: result.downloadUrl
+                        url: result.url
                     },
                     caption: `» ${ctx.format.bold("URL")}: ${url}`
                 });

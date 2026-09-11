@@ -17,14 +17,14 @@ module.exports = {
         if (!ctx.helper.isUrl(url)) return await ctx.reply(ctx.format.info(config.msg.invalidUrl));
 
         try {
-            const result = ctx.api.createUrl("alwayscodex", "/api/tools/ssweb", {
-                url,
-                device: ctx.used === "sshp" ? "mobile" : ctx.used === "sstab" ? "tablet" : "desktop"
+            const result = ctx.api.createUrl("nexray", "/tools/ssweb", {
+                url
             });
+            const screenshotUrl = (await ctx.request.get(apiUrl)).data.result.file_url;
 
             await ctx.reply({
                 image: {
-                    url: result
+                    url: screenshotUrl
                 },
                 caption: `»› ${ctx.format.bold("URL")}: ${url}`
             });

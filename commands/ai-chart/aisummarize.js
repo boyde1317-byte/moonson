@@ -43,8 +43,8 @@ module.exports = {
             }
 
             const prompt = `Summarize the following text in a clear, concise manner. Use bullet points for key takeaways:\n\n${input}`;
-            const apiUrl = tools.api.createUrl("alwayscodex", "/api/ai/deepseek", {
-                teks: prompt,
+            const apiUrl = tools.api.createUrl("nexray", "/ai/chatgpt", {
+                text: prompt,
                 session: senderDb.sessionId.aisummarize
             });
 

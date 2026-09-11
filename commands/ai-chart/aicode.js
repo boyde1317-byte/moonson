@@ -36,8 +36,8 @@ module.exports = {
 
             // Use chatgpt-org with a coding-focused system prompt
             const prompt = `You are an expert programmer. Provide clean, well-commented code with explanations. Question: ${input}`;
-            const apiUrl = tools.api.createUrl("alwayscodex", "/api/ai/chatgpt-org", {
-                teks: prompt,
+            const apiUrl = tools.api.createUrl("nexray", "/ai/chatgpt", {
+                text: prompt,
                 model: "openai/gpt-4o-mini",
                 session: senderDb.sessionId.aicode
             });

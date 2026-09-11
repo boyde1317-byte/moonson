@@ -31,8 +31,8 @@ module.exports = {
             if (styleMatch) style = styleMatch;
 
             const prompt = `Write a beautiful ${style} poem about: ${input}. Make it evocative and memorable.`;
-            const apiUrl = tools.api.createUrl("alwayscodex", "/api/ai/deepseek", {
-                teks: prompt,
+            const apiUrl = tools.api.createUrl("nexray", "/ai/chatgpt", {
+                text: prompt,
                 session: ctx.helper.randomUUID()
             });
 
