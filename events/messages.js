@@ -62,7 +62,8 @@ module.exports = (bot) => {
             const senderDb = ctx.db.user;
             const groupDb = ctx.db.group;
 
-            if (!senderDb || !groupDb) return;
+            if (!senderDb) return;
+            if (isGroup && !groupDb) return;
 
             if (senderDb?.premium && Date.now() >= senderDb?.premiumExpiration) {
                 senderDb.premium = false;
